@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditingComponent } from './profile-editing/profile-editing.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { VideoBoardComponent } from './video-board/video-board.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VideoBoardComponent } from './video-board/video-board.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
