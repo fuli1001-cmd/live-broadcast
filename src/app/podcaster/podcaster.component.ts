@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Podcaster } from '../models/podcaster';
 
 @Component({
   selector: 'app-podcaster',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./podcaster.component.css']
 })
 export class PodcasterComponent implements OnInit {
+  @Input() podcaster: Podcaster;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.podcaster);
   }
 
 }

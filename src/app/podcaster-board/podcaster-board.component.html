@@ -2,4 +2,11 @@
     <button type="button" class="btn btn-secondary">热门</button>
     <button type="button" class="btn btn-secondary">关注</button>
 </div>
-<app-podcaster></app-podcaster>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm" *ngFor="let podcaster of podcasters">
+        <app-podcaster [podcaster]="podcaster"></app-podcaster>
+      </div>
+    </div>
+  </div>
