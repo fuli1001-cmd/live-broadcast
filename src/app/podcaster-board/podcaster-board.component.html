@@ -1,14 +1,14 @@
-<div>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">热门</button>
-    <button type="button" class="btn btn-secondary">关注</button>
-  </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm" *ngFor="let podcaster of podcasters">
-        <app-podcaster [podcaster]="podcaster"></app-podcaster>
+  <div class="h-100">
+      <div class="row no-gutters" style="height: 11%; background-color: white;">
+          <div class="col-sm d-flex align-items-center justify-content-center">
+            <button type="button" class="btn btn-danger btn-padding-left-right-30">热门</button>
+            <button type="button" class="btn btn-secondary btn-padding-left-right-30">关注</button>
+          </div>
+      </div>
+    <div class="row no-gutters">
+      <div class="col-sm-4" *ngFor="let podcaster of podcasters; let i = index">
+        <app-podcaster [podcaster]="podcaster" [rMargin]="i % 3 != 2"></app-podcaster>
       </div>
     </div>
   </div>
-</div>

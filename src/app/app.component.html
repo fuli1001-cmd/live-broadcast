@@ -1,12 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-      <app-ad></app-ad>
-      <app-podcaster-board></app-podcaster-board>
+<div class="h-100" style="background-color:lightgray;">
+  <div class="row h-100 no-gutters">
+    <!-- 广告、播客、视频 -->
+    <div class="col-sm-9">
+      <!-- 广告 -->
+      <div class="row no-gutters mb-sm-3" style="height: 18%;">
+        <div class="col-sm h-100">
+          <app-ad></app-ad>
+        </div>
+      </div>
+      <!-- 播客、视频 -->
+      <div class="row no-gutters" style="height: 80%;">
+        <!-- 播客 -->
+        <div class="w58">
+          <app-podcaster-board></app-podcaster-board>
+        </div>
+        <div class="w1"></div>
+        <!-- 视频 -->
+        <div class="w41">
+          <app-video-board></app-video-board>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <app-profile></app-profile>
-      <app-rewards></app-rewards>
+    <!-- 用户信息、打赏排行榜 -->
+    <div class="col-sm-3">
+      <!-- 用户信息 -->
+      <div class="row no-gutters" style="height: 16%;">
+        <div class="col-sm">
+          <app-profile></app-profile>
+        </div>
+      </div>
+      <!-- 打赏排行榜 -->
+      <div class="row no-gutters" style="height: 83%;">
+        <div class="col-sm">
+          <app-rewards></app-rewards>
+        </div>
+      </div>
     </div>
   </div>
 </div>

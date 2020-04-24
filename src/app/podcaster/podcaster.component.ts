@@ -8,11 +8,13 @@ import { Podcaster } from '../models/podcaster';
 })
 export class PodcasterComponent implements OnInit {
   @Input() podcaster: Podcaster;
+  @Input() rMargin: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.podcaster);
+    console.log('rMargin:');
+    console.log(this.rMargin);
   }
 
 }
