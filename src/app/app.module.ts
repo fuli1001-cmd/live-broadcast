@@ -11,6 +11,8 @@ import { ProfileEditingComponent } from './profile-editing/profile-editing.compo
 import { RewardsComponent } from './rewards/rewards.component';
 import { VideoBoardComponent } from './video-board/video-board.component';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { NgxAgoraModule } from 'ngx-agora';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxAgoraModule.forRoot({ AppID: environment.agora.appId })
   ],
   providers: [],
   bootstrap: [AppComponent]
