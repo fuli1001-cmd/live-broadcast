@@ -14,8 +14,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.user = {
       HostId: 1,
-      HostName: '看到卡夫卡',
-      Avatar: 'https://img.techbrij.com/techbrij-about-thumbnail.jpg'
+      HostName: '空心菜',
+        Avatar: 'https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz.'
     };
   }
 

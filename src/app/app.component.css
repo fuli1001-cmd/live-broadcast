@@ -1,11 +1,27 @@
-.w58 {
+.w-58 {
     width: 58%!important;
 }
 
-.w41 {
+.w-41 {
     width: 41%!important;
 }
 
-.w1 {
+.w-1 {
     width: 1%!important;
+}
+
+.h-18 {
+  height: 18%;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.h-16 {
+  height: 16%;
+}
+
+.h-83 {
+  height: 83%;
 }

@@ -1,18 +1,21 @@
-.local {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    width: 20vw;
-    height: 20vh;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .remote {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  }
+#message-input-area {
+  position: absolute;
+  bottom: 19px;
+  left: 12px;
+}
+
+#messages {
+  position: absolute;
+  bottom: 39px;
+  left: 12px;
+}
+
+.w63 {
+  width: 63% !important;
+}
+
+input.transparent {
+  background-color: rgba(51,51,51,0.4) !important;
+  border: none !important;
+}
+
