@@ -1,0 +1,22 @@
+<div class="row no-gutters p-sm-2">
+  <div>
+    <img id="avatar" src="{{user.avatar}}" class="rounded-circle" alt="{{user.nickname}}">
+  </div>
+  <div class="ml-sm-2">
+    <div class="bd-highlight">{{user.nickname}}</div>
+    <div class="bd-highlight">余额</div>
+    <div class="row no-gutters">
+      <div class="col-sm-4">等级</div>
+      <div class="col-sm-4">成就</div>
+      <div class="col-sm-4">关注</div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-danger" (click)="editProdile()">编辑资料</button>
+      </div>
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-danger" (click)="showRewardHistory()">打赏记录</button>
+      </div>
+    </div>
+  </div>
+</div>

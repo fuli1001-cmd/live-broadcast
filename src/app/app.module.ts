@@ -3,17 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AdComponent } from './ad/ad.component';
-import { PodcasterComponent } from './podcaster/podcaster.component';
-import { PodcasterBoardComponent } from './podcaster-board/podcaster-board.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileEditingComponent } from './profile-editing/profile-editing.component';
-import { RewardsComponent } from './rewards/rewards.component';
-import { VideoBoardComponent } from './video-board/video-board.component';
+import { AppComponent } from './components/app/app.component';
+import { AdComponent } from './components/ad/ad.component';
+import { PodcasterComponent } from './components/podcaster/podcaster.component';
+import { PodcasterBoardComponent } from './components/podcaster-board/podcaster-board.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileEditingComponent } from './components/profile-editing/profile-editing.component';
+import { RewardsComponent } from './components/rewards/rewards.component';
+import { VideoBoardComponent } from './components/video-board/video-board.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NgxAgoraModule } from 'ngx-agora';
+import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
+import { RewardComponent } from './components/reward/reward.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NgxAgoraModule } from 'ngx-agora';
     ProfileComponent,
     ProfileEditingComponent,
     RewardsComponent,
-    VideoBoardComponent
+    VideoBoardComponent,
+    RewardHistoryComponent,
+    RewardComponent
   ],
   imports: [
     BrowserModule,

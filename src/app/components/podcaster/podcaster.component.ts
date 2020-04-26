@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Podcaster } from '../models/podcaster';
+import { Podcaster } from '../../models/podcaster';
 
 @Component({
   selector: 'app-podcaster',

@@ -1,5 +1,7 @@
 export interface User {
-    HostName: string;
-    HostId: number;
-    Avatar: string;
+    userId: string;
+    nickname: string;
+    avatar: string;
+    username: string;
+    phonenumber: string;
 }

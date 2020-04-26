@@ -1,6 +1,7 @@
 export interface Reward {
-    name: string;
-    amount: number;
-    timestamp: Date;
-    avatar: string;
+    Name: string;
+    FromUser: string;
+    Price: number;
+    Time: string;
+    Avatar: string;
 }

@@ -1,0 +1,22 @@
+#avatar {
+    width: 34px;
+    height: 34px;
+}
+
+.image{
+    width: 10%!important;
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+}
+.image img{
+    position:absolute;
+}
+
+.w-10 {
+    width: 10%!important;
+}
+
+.w-90 {
+    width: 90%!important;
+}

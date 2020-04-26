@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Reward } from '../models/reward';
+import { Reward } from '../../models/reward';
+import { RewardService } from '../../services/reward.service';
 
 @Component({
     selector: 'app-rewards',
@@ -10,15 +11,15 @@ export class RewardsComponent implements OnInit {
     @Input() rewards: Reward[];
     @Input() type: string;
 
-    constructor() { }
+    constructor(private rewardService: RewardService) { }
 
     ngOnInit(): void {
         this.type = 'ranking-list';
-        this.rewards = [
-            { name: '留学生1', amount: 10023, avatar: null, timestamp: null },
-            { name: '留学生2', amount: 1232, avatar: null, timestamp: null },
-            { name: '留学生3', amount: 234, avatar: null, timestamp: null },
-        ]
+        // this.getRewardHistory();
+    }
+
+    async getRewardHistory(): Promise<void> {
+        this.rewards = await this.rewardService.getRewardHistory();
     }
 
 }

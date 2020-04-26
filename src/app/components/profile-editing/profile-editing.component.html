@@ -1,0 +1,22 @@
+<div class="row">昵称</div>
+<div class="row">
+    <input type="text" class="form-control" [(ngModel)]="user.nickname">
+</div>
+
+<div class="row">手机号</div>
+<div class="row">
+    <input type="text" class="form-control" [(ngModel)]="user.phonenumber">
+</div>
+
+<div class="row">性别</div>
+<div class="row">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">男</a>
+          <a class="dropdown-item" href="#">女</a>
+        </div>
+      </div>
+</div>
