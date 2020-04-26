@@ -3,13 +3,14 @@ import { Reward } from '../models/reward';
 import { GeneralService } from './general.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RewardService {
 
-  constructor(private generalService: GeneralService) { }
+    constructor(private generalService: GeneralService) { }
 
-  async getRewardHistory(): Promise<Reward[]> {
-    return await this.generalService.get<Reward[]>('Show/AuthOpShowByAction', 30006);
-  }
+    async getRewardHistory(): Promise<Reward[]> {
+        let data = { opCode: 30006 };
+        return await this.generalService.doAction<Reward[]>('Show/AuthOpShowByAction', data);
+    }
 }

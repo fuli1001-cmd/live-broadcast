@@ -2,7 +2,7 @@
 <div class="row no-gutters w-100" id="message-input-area">
   <input type="text" class="form-control w-63 transparent" placeholder="说点什么..." [(ngModel)]="messageContent">
   <button type="button" class="btn btn-light ml-sm-2" (click)="sendMessage()" style="color:red;">发送</button>
-  <button type="button" class="btn btn-light ml-sm-2" (click)="sendGift()">礼物</button>
+  <button type="button" class="btn btn-light ml-sm-2" (click)="showGifts()">礼物</button>
 </div>
 <div id="messages">
   <div *ngFor="let msg of messages; let i = index;" style="position:absolute;" [style.bottom.px]="(messages.length - i) * 30">

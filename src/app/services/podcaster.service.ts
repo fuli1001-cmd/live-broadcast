@@ -10,6 +10,7 @@ export class PodcasterService {
     constructor(private generalService: GeneralService) { }
 
     async getPodcasters(): Promise<Podcaster[]> {
-      return await this.generalService.get<Podcaster[]>('Show/AuthOpShowByAction', 23001);
+        let data = { opCode: 23001 };
+        return await this.generalService.doAction<Podcaster[]>('Show/AuthOpShowByAction', data);
     }
 }

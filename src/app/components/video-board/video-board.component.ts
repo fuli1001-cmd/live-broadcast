@@ -3,7 +3,7 @@ import { NgxAgoraService, Stream, AgoraClient, ClientEvent, StreamEvent } from '
 import { environment } from 'src/environments/environment';
 import * as rtm from "agora-rtm-sdk";
 import { Message } from 'src/app/models/message';
-import { AnyTxtRecord } from 'dns';
+import { GiftService } from '../../services/gift.service';
 
 @Component({
     selector: 'app-video-board',
@@ -24,7 +24,7 @@ export class VideoBoardComponent implements OnInit {
     messageContent: string;
     messages: Message[] = [];
 
-    constructor(private ngxAgoraService: NgxAgoraService) { }
+    constructor(private ngxAgoraService: NgxAgoraService, private giftService: GiftService) { }
 
     ngOnInit(): void {
         this.uid = Math.floor(Math.random() * 100);
@@ -128,8 +128,9 @@ export class VideoBoardComponent implements OnInit {
         });
     }
 
-    sendGift(): void {
-        
+    async showGifts(): Promise<void> {
+        let gifts = await this.giftService.getGifts();
+        console.log(gifts);
     }
 
 }

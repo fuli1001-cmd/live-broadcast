@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { GeneralService } from './general.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ErrorService {
 
-  constructor(private generalService: GeneralService) { }
+    constructor(private generalService: GeneralService) { }
 
-  async getErrors(): Promise<any[]> {
-    return await this.generalService.get<any[]>('Other/OpByAction', 29002);
-  }
+    async getErrors(): Promise<any[]> {
+        let data = { opCode: 29002 };
+        return await this.generalService.doAction<any[]>('Other/OpByAction', data);
+    }
 }
