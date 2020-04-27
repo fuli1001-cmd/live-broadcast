@@ -1,8 +1,57 @@
-.image{
+.image {
     position:relative;
     overflow:hidden;
     padding-bottom:100%;
+    border-radius:4px;
+    background-color: lightgray;
 }
-.image img{
+/* .image img {
+    position:absolute;
+} */
+
+.cover-img {
     position:absolute;
 }
+
+.info-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 29%;
+    background:linear-gradient(180deg,rgba(51,51,51,0) 0%,rgba(26,26,26,1) 100%);
+    opacity:0.6;
+}
+
+.info-bar-text {
+    /* font-weight:400; */
+    /* line-height:10px; */
+    color: white;
+}
+
+.info-bar-fans {
+    font-size: 0.9vw;
+    /* font-size:14px; */
+}
+
+.info-bar-name {
+    font-size: 1vw;
+    /* font-size:16px; */
+}
+
+.info-bar-fav-count {
+    font-size: 0.9vw;
+    text-align: right;
+    /* font-size:16px; */
+}
+
+.info-bar-zhibo-icon {
+    position: absolute;
+    right: 0;
+    width: 15%;
+}
+
+.info-bar-fans-icon {
+    width: 10%;
+}
+

@@ -1,7 +1,28 @@
-<div class="card text-white mt-sm-2 image" [ngClass]="{'mr-sm-2' : rMargin}" style="background-color: lightgray;">
-    <img src="{{podcaster.CoverImage}}" class="card-img" alt="{{podcaster.HostName}}">
-    <div class="card-img-overlay">
+<div class="mt-sm-2 image" [ngClass]="{'mr-sm-2' : rMargin}">
+    <img src="{{podcaster.CoverImage}}" class="cover-img card-img" alt="{{podcaster.HostName}}">
+    <!-- <div class="card-img-overlay">
       <p class="card-text">{{podcaster.NumFans}}</p>
       <p class="card-text">{{podcaster.HostName}}</p>
+    </div> -->
+    <div class="pl-sm-2 pr-sm-2 pt-sm-2 info-bar">
+      <div class="row no-gutters" style="height: 50%;">
+        <div class="col-6">
+          <img src="../../../assets/images/podcaster/ico_people@2x.png" class="align-middle info-bar-fans-icon">
+          <span class="info-bar-text info-bar-fans ml-sm-1">{{podcaster.NumFans}}人</span>
+        </div>
+        <div class="col-6">
+          <img class="align-middle info-bar-zhibo-icon" src="../../../assets/images/podcaster/ic_zhibo@2x.png">
+        </div>
+      </div>
+      <div class="row no-gutters"  style="height: 50%;">
+        <div class="col-6 info-bar-text info-bar-name">
+          {{podcaster.HostName}}
+        </div>
+        <div class="col-6" style="text-align: right;">
+          <img src="../../../assets/images/podcaster/ic_heart@2x.png" class="align-middle info-bar-fans-icon">
+          <span class="info-bar-text info-bar-fav-count ml-sm-2">{{podcaster.NumFans}}</span>
+        </div>
+      </div>
     </div>
+    
   </div>

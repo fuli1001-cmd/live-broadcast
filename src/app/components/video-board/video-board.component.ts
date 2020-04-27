@@ -115,12 +115,12 @@ export class VideoBoardComponent implements OnInit {
     }
 
     sendMessage(): void {
-        this.rtmChannel.sendMessage({ text: this.messages }).then(() => {
-            let message = {
-                content: this.messageContent,
-                name: null,
-                type: 'msg'
-            }
+        let message = {
+            content: this.messageContent,
+            name: null,
+            type: 'msg'
+        }
+        this.rtmChannel.sendMessage({ text: JSON.stringify(message) }).then(() => {
             this.messages.push(message);
             this.messageContent = null;
         }).catch(err => {
@@ -131,6 +131,10 @@ export class VideoBoardComponent implements OnInit {
     async showGifts(): Promise<void> {
         let gifts = await this.giftService.getGifts();
         console.log(gifts);
+    }
+
+    stopWatching(): void {
+
     }
 
 }

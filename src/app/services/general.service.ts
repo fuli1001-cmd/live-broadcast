@@ -11,7 +11,7 @@ export class GeneralService {
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': 'BasicAuth oN1DGOcylbfvvkje6YYQNd7OQKdm8ZNi'
+            'Authorization': 'BasicAuth oN1DGOcylbcCMSs6MXkGf3qVjijNUu6g'
         }),
         responseType: 'blob' as 'json'
     };

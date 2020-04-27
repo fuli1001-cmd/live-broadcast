@@ -1,11 +1,22 @@
 <div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div>
 <div class="row no-gutters w-100" id="message-input-area">
-  <input type="text" class="form-control w-63 transparent" placeholder="说点什么..." [(ngModel)]="messageContent">
-  <button type="button" class="btn btn-light ml-sm-2" (click)="sendMessage()" style="color:red;">发送</button>
-  <button type="button" class="btn btn-light ml-sm-2" (click)="showGifts()">礼物</button>
+  <input type="text" class="form-control message-input" placeholder="说点什么..." [(ngModel)]="messageContent">
+  <button type="button" class="btn btn-send ml-sm-2" (click)="sendMessage()">发送</button>
+  <img src="../../../assets/images/podcaster/ico_gift_n.png" class="align-middle btn-circle ml-sm-3" (click)="showGifts()">
+  <img src="../../../assets/images/podcaster/zhibo_ico_close_n.png" class="align-middle btn-circle ml-sm-2" (click)="stopWatching()">
 </div>
-<div id="messages">
-  <div *ngFor="let msg of messages; let i = index;" style="position:absolute;" [style.bottom.px]="(messages.length - i) * 30">
-    <span class="badge badge-pill badge-secondary"><span style="color: #FF4A65;">{{msg.name}}:&nbsp;</span>{{msg.content}}</span>
+<div id="messages" class="row align-items-end">
+  <!-- <div *ngFor="let msg of messages; let i = index;" style="position:absolute;" [style.bottom.px]="(messages.length - i) * 30">
+    <span class="badge badge-pill badge-secondary text-wrap" style="text-align: left;">
+      <span style="color: #FF4A65;">{{msg.name}}:&nbsp;</span>
+      {{msg.content}}
+    </span>
+  </div> -->
+
+  <div class="col-12" *ngFor="let msg of messages">
+    <span class="badge badge-pill badge-secondary text-wrap mt-2" style="text-align: left;">
+      <span style="color: #FF4A65;">{{msg.name}}:&nbsp;</span>
+      {{msg.content}}
+    </span>
   </div>
 </div>
