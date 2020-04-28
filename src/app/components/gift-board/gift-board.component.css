@@ -67,8 +67,8 @@
 Bootstrap 4 carousel indicators below carousel
 https://codepen.io/dferenc/pen/XVoboo 
 */
-#carouselExampleIndicators {
-    margin-bottom: 6%;
+#carouselGiftIndicators {
+  margin-bottom: 6%;
 }
 .carousel-indicators {
     bottom: -30px;

@@ -4,39 +4,43 @@ import { GiftService } from '../../services/gift.service';
 import { min } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-gift-board',
-  templateUrl: './gift-board.component.html',
-  styleUrls: ['./gift-board.component.css']
+    selector: 'app-gift-board',
+    templateUrl: './gift-board.component.html',
+    styleUrls: ['./gift-board.component.css']
 })
 export class GiftBoardComponent implements OnInit {
-  giftsGroup: Gift[][];
-  gifts: Gift[];
-  @Output() onClose = new EventEmitter();
+    giftGroups: Gift[][] = [];
+    @Output() onClose = new EventEmitter();
 
-  constructor(private giftService: GiftService) { }
+    constructor(private giftService: GiftService) { }
 
-  async ngOnInit(): Promise<void> {
-    // this.giftsGroup = [];
-  }
+    async ngOnInit(): Promise<void> {
+        await this.init();
+    }
 
-  // private async init(): Promise<void> {
-  //   let gifts = await this.giftService.getGifts();
-  //   let start = 0;
-  //   let end = Math.min(8, gifts.length - start);
-  //   while (gifts.length > start) {
-  //     end = start + 8;
-  //     this.giftsGroup.push(gifts.slice(start, end));
-  //   }
-    
-    
-  // }
+    private async init(): Promise<void> {
+        let gifts = await this.giftService.getGifts();
 
-  onClickClose(): void {
-    this.onClose.emit();
-  }
+        const myClonedArray = [];
+        gifts.forEach(val => myClonedArray.push(val));
+        myClonedArray.forEach(val => gifts.push(val));
+        console.log(gifts);
 
-  onClickSend(): void {
+        let start = 0;
+        while (gifts.length > start) {
+            let end = Math.min(start + 8, gifts.length);
+            this.giftGroups.push(gifts.slice(start, end));
+            start += 8;
+        }
+        console.log(this.giftGroups);
+    }
 
-  }
+    onClickClose(): void {
+        this.onClose.emit();
+    }
+
+    onClickSend(): void {
+
+    }
 
 }
