@@ -1,20 +1,7 @@
-#message-input-area {
+.message-input-area {
   position: absolute;
-  bottom: 19px;
-  left: 12px;
-}
-
-#messages {
-  position: absolute;
-  bottom: 69px;
-  left: 12px;
-  height: 40%;
-  width: 100%;
-  overflow: auto;
-}
-
-.w-63 {
-  width: 63% !important;
+  bottom: 2.5%;
+  left: 2.5%;
 }
 
 .message-input {
@@ -38,5 +25,27 @@
 .btn-circle {
   width: 6%;
   cursor: pointer;
+}
+
+.messages {
+  position: absolute;
+  bottom: 9%;
+  left: 12px;
+  max-height: 30%;
+  overflow: auto;
+  /* 102% to hide the scroll bar*/
+  width: 102%;
+  padding-right: 15px;
+  /* reverse display to display newly added line without manaual scroll */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.gift-board {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(32,30,30,1);
 }
 

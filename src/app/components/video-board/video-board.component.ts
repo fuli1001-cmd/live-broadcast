@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import * as rtm from "agora-rtm-sdk";
 import { Message } from 'src/app/models/message';
 import { GiftService } from '../../services/gift.service';
+import { Gift } from 'src/app/models/gift';
 
 @Component({
     selector: 'app-video-board',
@@ -24,9 +25,15 @@ export class VideoBoardComponent implements OnInit {
     messageContent: string;
     messages: Message[] = [];
 
+    enableSendButton: boolean;
+    showGiftBoard: boolean;
+    gifts: Gift[];
+
     constructor(private ngxAgoraService: NgxAgoraService, private giftService: GiftService) { }
 
     ngOnInit(): void {
+        this.enableSendButton = false;
+        this.showGiftBoard = false;
         this.uid = Math.floor(Math.random() * 100);
         this.rtc();
         this.rtm();
@@ -106,6 +113,7 @@ export class VideoBoardComponent implements OnInit {
                 this.rtmChannel.on('ChannelMessage', ({ text }, senderId) => { 
                     this.messages.push(JSON.parse(text));
                 });
+                this.enableSendButton = true;
             }).catch(err => {
                 console.error('join channel failed.', err);
             });
@@ -114,7 +122,7 @@ export class VideoBoardComponent implements OnInit {
         });
     }
 
-    sendMessage(): void {
+    onClickSendMessage(): void {
         let message = {
             content: this.messageContent,
             name: null,
@@ -128,12 +136,15 @@ export class VideoBoardComponent implements OnInit {
         });
     }
 
-    async showGifts(): Promise<void> {
-        let gifts = await this.giftService.getGifts();
-        console.log(gifts);
+    onClickShowGiftBoard(): void {
+        this.showGiftBoard = true;
     }
 
-    stopWatching(): void {
+    closeGiftBoard(): void {
+        this.showGiftBoard = false;
+    }
+
+    onClickStopWatching(): void {
 
     }
 

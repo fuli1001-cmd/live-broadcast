@@ -1,0 +1,75 @@
+.root {
+    /* padding-left: 3%; */
+    padding-top: 4%;
+    /* padding-right: 3%; */
+    background-color: rgba(0,0,0,0);
+}
+
+.title {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 4%;
+}
+
+.title-text {
+    width: 95%;
+    font-size: 1.1vw;
+    color: white;
+}
+
+.title-close {
+    width: 5%;
+    cursor: pointer;
+    position: absolute;
+    right: 3%;
+}
+
+.separator {
+    background-color: rgba(20,19,19,1);
+    height: 1px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 3%;
+}
+
+.gift {
+    text-align: center;
+    color: white;
+}
+
+.gift-name {
+    font-size: 0.9vw;
+}
+
+.gift-price {
+    font-size: 0.7vw;
+}
+
+.bottom {
+    background-color: rgba(46,44,44,1);
+    padding: 3%;
+}
+
+.bottom-text {
+    color: white;
+    align-self: center;
+    font-size: 1.1vw;
+}
+
+.bottom-btn {
+    background:rgba(255,74,101,1);
+    border-radius:16px;
+    color: white;
+    font-size: 1.3vw;
+}
+
+/* 
+Bootstrap 4 carousel indicators below carousel
+https://codepen.io/dferenc/pen/XVoboo 
+*/
+#carouselExampleIndicators {
+    margin-bottom: 6%;
+}
+.carousel-indicators {
+    bottom: -30px;
+}

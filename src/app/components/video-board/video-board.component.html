@@ -1,22 +1,21 @@
+<!-- 视频 -->
 <div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div>
-<div class="row no-gutters w-100" id="message-input-area">
+<!-- 输入框和按钮区域 -->
+<div class="row no-gutters w-100 message-input-area">
   <input type="text" class="form-control message-input" placeholder="说点什么..." [(ngModel)]="messageContent">
-  <button type="button" class="btn btn-send ml-sm-2" (click)="sendMessage()">发送</button>
-  <img src="../../../assets/images/podcaster/ico_gift_n.png" class="align-middle btn-circle ml-sm-3" (click)="showGifts()">
-  <img src="../../../assets/images/podcaster/zhibo_ico_close_n.png" class="align-middle btn-circle ml-sm-2" (click)="stopWatching()">
+  <button type="button" class="btn btn-send ml-sm-2" (click)="onClickSendMessage()" [attr.disabled]="enableSendButton ? null : ''">发送</button>
+  <img src="../../../assets/images/video-board/ico_gift_n.png" class="align-middle btn-circle ml-sm-3" (click)="onClickShowGiftBoard()">
+  <img src="../../../assets/images/video-board/zhibo_ico_close_n.png" class="align-middle btn-circle ml-2" (click)="onClickStopWatching()">
 </div>
-<div id="messages" class="row align-items-end">
-  <!-- <div *ngFor="let msg of messages; let i = index;" style="position:absolute;" [style.bottom.px]="(messages.length - i) * 30">
-    <span class="badge badge-pill badge-secondary text-wrap" style="text-align: left;">
-      <span style="color: #FF4A65;">{{msg.name}}:&nbsp;</span>
-      {{msg.content}}
-    </span>
-  </div> -->
-
-  <div class="col-12" *ngFor="let msg of messages">
+<!-- 消息展示区域 -->
+<div class="messages">
+  <div *ngFor="let msg of messages; let i = index;">
     <span class="badge badge-pill badge-secondary text-wrap mt-2" style="text-align: left;">
-      <span style="color: #FF4A65;">{{msg.name}}:&nbsp;</span>
-      {{msg.content}}
+      <span style="color: #FF4A65;">{{messages[messages.length - 1 -i].name}}:&nbsp;</span>
+      {{messages[messages.length - 1 -i].content}}
     </span>
   </div>
+</div>
+<div class="gift-board" *ngIf="showGiftBoard">
+  <app-gift-board (onClose)="closeGiftBoard()"></app-gift-board>
 </div>

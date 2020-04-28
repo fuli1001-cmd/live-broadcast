@@ -1,0 +1,50 @@
+<div class="root">
+    <!-- header -->
+    <div class="row no-gutters title">
+        <div class="title-text">赠送主播一个小礼物吧~</div>
+        <div class="title-close">
+            <img src="../../../assets/images/gift-board/delete.png" (click)="onClickClose()">
+        </div>
+    </div>
+
+    <!-- 分界线 -->
+    <div class="row no-gutters separator">
+        <div class="col-12"></div>
+    </div>
+    
+    <!-- 礼物区域 -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row no-gutters">
+                    <div class="col-3 gift mb-3" *ngFor="let gift of gifts; let i = index">
+                        <img class="w-50" src="{{gift.Url}}" alt="{{gift.Name}}">
+                        <div class="w-100 gift-name">{{gift.Name}}</div>
+                        <div class="w-100 gift-price">{{gift.Price}}豆</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="row no-gutters bottom">
+        <div class="col-6 bottom-text">余额：</div>
+        <div class="col-6">
+            <button type="button" class="btn bottom-btn float-right" (click)="onClickSend()">发送</button>
+        </div>
+    </div>
+</div>

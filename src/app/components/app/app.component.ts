@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,13 @@ export class AppComponent implements OnInit {
   displayProfileEditing: boolean;
   displayRewardHistory: boolean;
 
-  ngOnInit(): void {
+  constructor(private authService: AuthService) { }
+
+  async ngOnInit(): Promise<void> {
     this.displayRewardHistory = true;
+    // let result = await this.authService.login();
+    // console.log('****************************');
+    // console.log(result);
   }
 
   editProfile(): void {

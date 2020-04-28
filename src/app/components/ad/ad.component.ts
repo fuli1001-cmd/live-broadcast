@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AdService } from '../../services/ad.service';
-import { AuthService } from '../../services/auth.service';
-import * as pako from "pako";
 
 @Component({
   selector: 'app-ad',
@@ -10,7 +8,7 @@ import * as pako from "pako";
 })
 export class AdComponent implements OnInit {
 
-  constructor(private adService: AdService, private authService: AuthService) { }
+  constructor(private adService: AdService) { }
 
   ngOnInit(): void {
     // console.log("init");

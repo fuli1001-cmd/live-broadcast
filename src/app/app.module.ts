@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { NgxAgoraModule } from 'ngx-agora';
 import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
 import { RewardComponent } from './components/reward/reward.component';
+import { GiftBoardComponent } from './components/gift-board/gift-board.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RewardComponent } from './components/reward/reward.component';
     RewardsComponent,
     VideoBoardComponent,
     RewardHistoryComponent,
-    RewardComponent
+    RewardComponent,
+    GiftBoardComponent
   ],
   imports: [
     BrowserModule,

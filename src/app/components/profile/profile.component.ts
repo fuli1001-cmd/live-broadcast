@@ -21,8 +21,6 @@ export class ProfileComponent implements OnInit {
       username: 'kxc',
       phonenumber: '13894069305'
     };
-    // this.onEditProfile = new EventEmitter();
-    // this.onShowRewardHistory = new EventEmitter();
   }
 
   editProdile(): void {
