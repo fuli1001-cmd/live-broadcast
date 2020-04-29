@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PodcasterService } from '../../services/podcaster.service';
+import { PodcasterService } from '../../services/data/podcaster.service';
 import { Podcaster } from '../../models/podcaster';
 import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 

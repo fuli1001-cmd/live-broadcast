@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reward } from '../../models/reward';
-import { RewardService } from '../../services/reward.service';
+import { RewardService } from '../../services/data/reward.service';
 import { promise } from 'protractor';
 
 @Component({

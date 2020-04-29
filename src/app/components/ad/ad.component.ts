@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdService } from '../../services/ad.service';
+import { AdService } from '../../services/data/ad.service';
 
 @Component({
   selector: 'app-ad',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Reward } from '../models/reward';
+import { Reward } from '../../models/reward';
 import { GeneralService } from './general.service';
 
 @Injectable({

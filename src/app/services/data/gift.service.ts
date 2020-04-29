@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gift } from '../models/gift';
+import { Gift } from '../../models/gift';
 import { GeneralService } from './general.service';
 
 @Injectable({

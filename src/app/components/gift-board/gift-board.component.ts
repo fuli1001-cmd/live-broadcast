@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Gift } from 'src/app/models/gift';
-import { GiftService } from '../../services/gift.service';
+import { GiftService } from '../../services/data/gift.service';
 import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 
 @Component({
