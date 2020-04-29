@@ -4,6 +4,7 @@
     padding-bottom:100%;
     border-radius:4px;
     background-color: lightgray;
+    cursor: pointer;
 }
 /* .image img {
     position:absolute;

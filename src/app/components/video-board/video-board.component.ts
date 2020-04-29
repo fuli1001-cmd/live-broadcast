@@ -3,8 +3,8 @@ import { NgxAgoraService, Stream, AgoraClient, ClientEvent, StreamEvent } from '
 import { environment } from 'src/environments/environment';
 import * as rtm from "agora-rtm-sdk";
 import { Message } from 'src/app/models/message';
-import { GiftService } from '../../services/gift.service';
-import { Gift } from 'src/app/models/gift';
+import { PodcasterEventService } from '../../services/events/podcaster-event.service';
+import { Podcaster } from '../../models/podcaster';
 
 @Component({
     selector: 'app-video-board',
@@ -27,11 +27,15 @@ export class VideoBoardComponent implements OnInit {
 
     enableSendButton: boolean;
     showGiftBoard: boolean;
-    gifts: Gift[];
 
-    constructor(private ngxAgoraService: NgxAgoraService, private giftService: GiftService) { }
+    podcaster: Podcaster;
+
+    constructor(private ngxAgoraService: NgxAgoraService, 
+        private podcasterEventService: PodcasterEventService) { }
 
     ngOnInit(): void {
+        this.registerPodcasterEvent();
+
         this.enableSendButton = false;
         this.showGiftBoard = false;
         this.uid = Math.floor(Math.random() * 100);
@@ -39,14 +43,22 @@ export class VideoBoardComponent implements OnInit {
         this.rtm();
     }
 
+    private registerPodcasterEvent(): void {
+        this.podcasterEventService.podcasterSelectedEvent.subscribe(pc => this.joinPodcasterChannel(pc));
+    }
+
+    private joinPodcasterChannel(podcaster: Podcaster): void {
+        console.log(`join ${podcaster.HostName}'s channel.`);
+    }
+
     private rtc(): void {
         this.rtcClient = this.ngxAgoraService.createClient({ mode: 'live', codec: 'h264' });
-        this.setRtcClientHandlers();
+        this.registerRtcClientHandlers();
         this.rtcClient.setClientRole('audience');
         this.rtcClient.join(null, this.channel, this.uid, uid => console.debug('join success.'), err => console.debug(err));
     }
 
-    private setRtcClientHandlers(): void {
+    private registerRtcClientHandlers(): void {
         this.rtcClient.on(ClientEvent.Error, error => {
             console.debug('Got error msg:', error.reason);
             if (error.reason === 'DYNAMIC_KEY_TIMEOUT') {

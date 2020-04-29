@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Podcaster } from '../../models/podcaster';
+import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 
 @Component({
   selector: 'app-podcaster',
@@ -10,11 +11,15 @@ export class PodcasterComponent implements OnInit {
   @Input() podcaster: Podcaster;
   @Input() rMargin: boolean;
 
-  constructor() { }
+  constructor(private podcasterEventService: PodcasterEventService) { }
 
   ngOnInit(): void {
     console.log('rMargin:');
     console.log(this.rMargin);
+  }
+
+  onClickPodcaster(): void {
+    this.podcasterEventService.selectPodcaster(this.podcaster);
   }
 
 }

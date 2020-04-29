@@ -21,6 +21,8 @@ export class PodcasterBoardComponent implements OnInit {
 
   async getPodcasters(): Promise<void> {
       this.podcasters = await this.podcasterService.getPodcasters();
+      console.log(this.podcasters);
+      
   }
 
   onClickHot(): void {
