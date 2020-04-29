@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PodcasterService } from '../../services/podcaster.service';
 import { Podcaster } from '../../models/podcaster';
+import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 
 @Component({
   selector: 'app-podcaster-board',
@@ -12,7 +13,7 @@ export class PodcasterBoardComponent implements OnInit {
   displayType: DisplayTypesEnum;
   DisplayTypes = DisplayTypesEnum;
 
-  constructor(private podcasterService: PodcasterService) { }
+  constructor(private podcasterService: PodcasterService, private podcasterEventService: PodcasterEventService) { }
 
   ngOnInit(): void {
     this.getPodcasters();
@@ -21,8 +22,9 @@ export class PodcasterBoardComponent implements OnInit {
 
   async getPodcasters(): Promise<void> {
       this.podcasters = await this.podcasterService.getPodcasters();
+      if (this.podcasters.length > 0)
+        this.podcasterEventService.selectPodcaster(this.podcasters[0]);
       console.log(this.podcasters);
-      
   }
 
   onClickHot(): void {

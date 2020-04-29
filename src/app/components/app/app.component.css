@@ -1,3 +1,15 @@
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 24%;
+}
+
+.left-right-separator {
+  width: 0.8%;
+}
+
 .w-58 {
     width: 58%!important;
 }
@@ -18,10 +30,23 @@
   height: 80%;
 }
 
-.h-16 {
+.profile {
   height: 16%;
+  min-height: 135px;
+  background-color:white;
 }
 
-.h-83 {
+.reward {
   height: 83%;
+  background-color:white;
+}
+
+.profile-reward-separator {
+  height: 0.8%;
+  width: 100%;
+}
+
+.ad-podcaster-separator {
+  height: 1.5%;
+  width: 100%;
 }

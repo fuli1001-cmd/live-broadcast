@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Gift } from 'src/app/models/gift';
 import { GiftService } from '../../services/gift.service';
-import { min } from 'rxjs/operators';
+import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 
 @Component({
     selector: 'app-gift-board',
@@ -10,12 +10,16 @@ import { min } from 'rxjs/operators';
 })
 export class GiftBoardComponent implements OnInit {
     giftGroups: Gift[][] = [];
+    private gift: Gift;
+    @Input() podcasterId: number;
     @Output() onClose = new EventEmitter();
 
-    constructor(private giftService: GiftService) { }
+    constructor(private giftService: GiftService, private podcasterEventService: PodcasterEventService) { }
 
     async ngOnInit(): Promise<void> {
+        this.registerPodcasterEvent();
         await this.init();
+        console.log(`podcasterId: ${this.podcasterId}`);
     }
 
     private async init(): Promise<void> {
@@ -35,12 +39,20 @@ export class GiftBoardComponent implements OnInit {
         console.log(this.giftGroups);
     }
 
+    private registerPodcasterEvent(): void {
+        this.podcasterEventService.podcasterSelectedEvent.subscribe(podcaster => this.podcasterId = podcaster.HostId);
+    }
+
     onClickClose(): void {
         this.onClose.emit();
     }
 
-    onClickSend(): void {
+    async onClickSend(): Promise<void> {
+        let result = await this.giftService.sendGift(this.gift.Id, this.podcasterId);
+    }
 
+    onClickGift(gift: Gift): void {
+        this.gift = gift;
     }
 
 }

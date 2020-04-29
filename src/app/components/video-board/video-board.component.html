@@ -1,5 +1,6 @@
 <!-- 视频 -->
-<div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div>
+<!-- <div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div> -->
+<div id="remote-stream" class="w-100 h-100"></div>
 <!-- 输入框和按钮区域 -->
 <div class="row no-gutters w-100 message-input-area">
   <input type="text" class="form-control message-input" placeholder="说点什么..." [(ngModel)]="messageContent">
@@ -17,5 +18,5 @@
   </div>
 </div>
 <div class="gift-board" *ngIf="showGiftBoard">
-  <app-gift-board (onClose)="closeGiftBoard()"></app-gift-board>
+  <app-gift-board (onClose)="closeGiftBoard()" [podcasterId]="podcaster.HostId"></app-gift-board>
 </div>

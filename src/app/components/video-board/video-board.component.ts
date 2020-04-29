@@ -18,6 +18,7 @@ export class VideoBoardComponent implements OnInit {
     private uid: number;
 
     private rtcClient: AgoraClient;
+    private remoteStream: Stream;
     
     private rtmClient: any;
     private rtmChannel: any;
@@ -39,23 +40,49 @@ export class VideoBoardComponent implements OnInit {
         this.enableSendButton = false;
         this.showGiftBoard = false;
         this.uid = Math.floor(Math.random() * 100);
-        this.rtc();
-        this.rtm();
+        // this.rtc();
+        // this.rtm();
     }
 
     private registerPodcasterEvent(): void {
-        this.podcasterEventService.podcasterSelectedEvent.subscribe(pc => this.joinPodcasterChannel(pc));
+        this.podcasterEventService.podcasterSelectedEvent.subscribe(podcaster => {
+            this.joinPodcasterChannel(podcaster);
+            console.log(`*****************set ${podcaster.HostName} in VideoBoardComponent*****************`);
+        });
     }
 
     private joinPodcasterChannel(podcaster: Podcaster): void {
-        console.log(`join ${podcaster.HostName}'s channel.`);
+        if (this.rtcClient == null)
+            this.rtc();
+        
+        if (this.podcaster != null)
+        {
+            console.log(`***************leave ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId}****************`);
+            this.rtcClient.leave(() => {
+                console.log(`***************leave ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} success.***************`);
+                if (this.remoteStream)
+                    this.remoteStream.stop();
+                this.remoteCalls = [];
+                this.podcaster = podcaster;
+                console.log(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId}****************`);
+                this.rtcClient.join(null, this.podcaster.ShowId, this.uid, uid => console.debug(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} success.***************`), err => console.debug(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} failed.***************`, err));
+            }, err => {
+                console.log(`***************leave ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} failed.***************`);
+            });
+        }
+        else
+        {
+            this.podcaster = podcaster;
+            console.log(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId}****************`);
+            this.rtcClient.join(null, this.podcaster.ShowId, this.uid, uid => console.debug(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} success.***************`), err => console.debug(`***************join ${this.podcaster.HostName}'s channel ${this.podcaster.ShowId} failed.***************`, err));
+        }
     }
 
     private rtc(): void {
         this.rtcClient = this.ngxAgoraService.createClient({ mode: 'live', codec: 'h264' });
         this.registerRtcClientHandlers();
         this.rtcClient.setClientRole('audience');
-        this.rtcClient.join(null, this.channel, this.uid, uid => console.debug('join success.'), err => console.debug(err));
+        // this.rtcClient.join(null, this.channel, this.uid, uid => console.debug('join success.'), err => console.debug(err));
     }
 
     private registerRtcClientHandlers(): void {
@@ -80,11 +107,13 @@ export class VideoBoardComponent implements OnInit {
 
         this.rtcClient.on(ClientEvent.RemoteStreamSubscribed, evt => {
             const stream = evt.stream as Stream;
+            this.remoteStream = stream;
             const id = this.getRemoteId(stream);
             console.debug(`RemoteStreamSubscribed: ${id}`);
             if (!this.remoteCalls.length) {
                 this.remoteCalls.push(id);
-                setTimeout(() => stream.play(id), 1000);
+                stream.play(id);
+                // setTimeout(() => stream.play(id), 1000);
             }
         });
 
@@ -108,7 +137,8 @@ export class VideoBoardComponent implements OnInit {
     }
 
     private getRemoteId(stream: Stream): string {
-        return `agora_remote-${stream.getId()}`;
+        // return `agora_remote-${stream.getId()}`;
+        return 'remote-stream';
     }
 
     private rtm(): void {

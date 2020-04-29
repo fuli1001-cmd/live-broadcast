@@ -35,6 +35,7 @@
 .gift {
     text-align: center;
     color: white;
+    cursor: pointer;
 }
 
 .gift-name {

@@ -1,4 +1,16 @@
-<div class="p-sm-2">
-    <div class="text-center h-5" style="background-color: lightgreen;">打赏记录</div>
-    <app-reward [reward]="reward" *ngFor="let reward of rewards" style="height:80px;"></app-reward>
+<div class="root">
+    <div class="text-center title-bar" style="display: table;">
+        <div style="display: table-cell; vertical-align: middle;">
+          <div>
+            打赏记录
+          </div>
+        </div>
+    </div>
+    <!-- <div class="separator"></div> -->
+    <div class="separator">
+        <div class="separator-line"></div>
+    </div>
+    <div class="reward-history">
+        <app-reward class="reward" [reward]="reward" *ngFor="let reward of rewards"></app-reward>
+    </div>
 </div>
