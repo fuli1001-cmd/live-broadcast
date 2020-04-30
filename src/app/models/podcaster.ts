@@ -6,4 +6,6 @@ export interface Podcaster {
     HostId: number;
     CoverImage: string;
     Avatar: string;
+    AgoraOnlineStatus: string;
+    AgoraChannelMemberCount: number;
 }

@@ -6,10 +6,17 @@ import { Podcaster } from '../../models/podcaster';
 })
 export class PodcasterEventService {
   @Output() podcasterSelectedEvent: EventEmitter<Podcaster> = new EventEmitter();
+  @Output() podcastersEvent: EventEmitter<Podcaster[]> = new EventEmitter();
 
   constructor() { }
 
   selectPodcaster(podcaster: Podcaster): void {
     this.podcasterSelectedEvent.emit(podcaster);
   }
+
+  sendPodcasters(podcasters: Podcaster[]): void {
+    if (podcasters != null && podcasters.length > 0)
+      this.podcastersEvent.emit(podcasters);
+  }
+
 }

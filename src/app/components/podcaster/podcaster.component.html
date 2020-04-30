@@ -6,11 +6,11 @@
     </div> -->
     <div class="pl-sm-2 pr-sm-2 pt-sm-2 info-bar">
       <div class="row no-gutters" style="height: 50%;">
-        <div class="col-6">
+        <div class="col-6" *ngIf="podcaster.AgoraOnlineStatus == 'ONLINE'">
           <img src="../../../assets/images/podcaster/ico_people@2x.png" class="align-middle info-bar-fans-icon">
-          <span class="info-bar-text info-bar-fans ml-sm-1">{{podcaster.NumFans}}人</span>
+          <span class="info-bar-text info-bar-fans ml-sm-1">{{podcaster.AgoraChannelMemberCount}}人</span>
         </div>
-        <div class="col-6">
+        <div class="col-6" *ngIf="podcaster.AgoraOnlineStatus == 'ONLINE'">
           <img class="align-middle info-bar-zhibo-icon" src="../../../assets/images/podcaster/ic_zhibo@2x.png">
         </div>
       </div>

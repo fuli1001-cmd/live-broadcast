@@ -1,12 +1,13 @@
+<button type="button" class="btn btn-enter align-middle" (click)="onClickEnterChannel()" *ngIf="showEnterButton">进入直播间</button>
 <!-- 视频 -->
 <!-- <div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div> -->
-<div id="remote-stream" class="w-100 h-100"></div>
+<div id="remote-stream" class="remote-stream"></div>
 <!-- 输入框和按钮区域 -->
 <div class="row no-gutters w-100 message-input-area">
-  <input type="text" class="form-control message-input" placeholder="说点什么..." [(ngModel)]="messageContent">
-  <button type="button" class="btn btn-send ml-sm-2" (click)="onClickSendMessage()" [attr.disabled]="enableSendButton ? null : ''">发送</button>
-  <img src="../../../assets/images/video-board/ico_gift_n.png" class="align-middle btn-circle ml-sm-3" (click)="onClickShowGiftBoard()">
-  <img src="../../../assets/images/video-board/zhibo_ico_close_n.png" class="align-middle btn-circle ml-2" (click)="onClickStopWatching()">
+  <input type="text" class="form-control message-input" placeholder="说点什么..." [(ngModel)]="messageContent" [attr.disabled]="showEnterButton">
+  <button type="button" class="btn btn-send ml-sm-2" (click)="onClickSendMessage()" [attr.disabled]="enableSendButton ? null : ''" [attr.disabled]="showEnterButton">发送</button>
+  <img src="../../../assets/images/video-board/ico_gift_n.png" class="align-middle btn-circle ml-sm-3" (click)="onClickShowGiftBoard()" [attr.disabled]="showEnterButton">
+  <img src="../../../assets/images/video-board/zhibo_ico_close_n.png" class="align-middle btn-circle ml-2" (click)="onClickStopWatching()" [attr.disabled]="showEnterButton">
 </div>
 <!-- 消息展示区域 -->
 <div class="messages">
@@ -17,6 +18,54 @@
     </span>
   </div>
 </div>
+<!-- 礼物 -->
 <div class="gift-board" *ngIf="showGiftBoard">
   <app-gift-board (onClose)="closeGiftBoard()" [podcasterId]="podcaster.HostId"></app-gift-board>
+</div>
+<!-- 左上角主播信息 -->
+<div class="podcaster-info" *ngIf="podcaster">
+  <img src="https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz." class="rounded-circle podcaster-info-avatar">
+  <span class="ml-1 podcaster-info-text">{{podcaster.HostName}}</span>
+  <img src="../../../assets/images/video-board/ico_zan_n.png" class="rounded-circle podcaster-info-like floating-right">
+</div>
+<!-- 右上角观众人数 -->
+<div class="member-count align-middle" *ngIf="podcaster">
+    <img src="../../../assets/images/podcaster/ico_people.png" class="align-middle">
+    <div class="member-count-text">{{podcaster.AgoraChannelMemberCount}}</div>
+</div>
+<!-- 左上角打赏信息 -->
+<div class="reward-info">
+  <img src="../../../assets/images/video-board/ico_money.png" class="reward-info-icon">
+  <span class="ml-1 reward-info-text">本场打赏&nbsp;&nbsp;</span>
+</div>
+<!-- 广告 -->
+<div class="ad">
+  <div class="ad-row row no-gutters">
+    <div class="col-6">
+      <img class="ad-img" src='../../../assets/images/video-board/test_ad.png'>
+    </div> 
+    <div class="col-6">
+      <img class="ad-img ad-img-right" src='../../../assets/images/video-board/test_ad.png'>
+    </div> 
+  </div>
+  <div class="ad-row row no-gutters">
+    <div class="col-6">
+      <img class="ad-img" src='../../../assets/images/video-board/test_ad.png'>
+    </div> 
+    <div class="col-6">
+      <img class="ad-img ad-img-right" src='../../../assets/images/video-board/test_ad.png'>
+    </div> 
+  </div>
+  <div class="ad-row row no-gutters">
+    <div class="col-6"></div> 
+    <div class="col-6">
+      <img class="ad-img ad-img-right" src='../../../assets/images/video-board/test_ad.png'>
+    </div> 
+  </div>
+</div>
+<!-- 礼物消息 -->
+<div class="gift-msg" *ngIf="giftMessage">
+  <span class="badge badge-pill badge-secondary text-wrap mt-2" style="text-align: left;">
+    {{giftMessage.name}}&nbsp;&nbsp;送出{{giftMessage.content}}
+  </span>
 </div>
