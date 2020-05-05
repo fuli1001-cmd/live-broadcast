@@ -17,9 +17,10 @@ export class ProfileComponent implements OnInit {
     this.user = {
       userId: '1',
       nickname: '空心菜',
-      avatar: 'https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz.',
+        avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968',
       username: 'kxc',
-      phonenumber: '13894069305'
+        phonenumber: '13894069305',
+        gender: '男'
     };
   }
 

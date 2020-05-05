@@ -1,18 +1,10 @@
-<div class="row no-gutters">
-    <div class="w-10">
-        <img id="avatar" src="{{reward.Avatar}}" class="rounded-circle" alt="{{reward.FromUser}}">
+<div class="row no-gutters reward-row">
+    <div class="col-auto align-self-center">
+        <img src="{{reward.Avatar}}" class="avatar rounded-circle" alt="{{reward.FromUser}}">
     </div>
-    <div class="w-90">
-        <div class="col-12">
-            {{reward.FromUser}}
-            <div class="row no-gutters float-right">
-                <div class="col-12">
-                    <div class="float-right">打赏{{reward.Price}}</div>
-                </div>
-                <div class="col-12">
-                    <div class="float-right">{{reward.Time}}</div>
-                </div>
-            </div>
-        </div> 
+    <div class="col-auto align-self-center text text-name pl-1">{{reward.FromUser}}</div>
+    <div class="col">
+      <div class="float-right text text-reward">打赏{{reward.Price}}</div>
+      <div class="float-right text text-time">{{reward.Time}}</div>
     </div>
 </div>

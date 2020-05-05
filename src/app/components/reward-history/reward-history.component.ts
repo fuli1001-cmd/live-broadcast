@@ -26,21 +26,21 @@ export class RewardHistoryComponent implements OnInit {
         FromUser: 'mcfksd',
         Price: 123,
         Time: '2019-12-17 12:35:23',
-        Avatar: 'https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz.'
+            Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
       },
       {
         Name: '讽刺的是',
         FromUser: '大厦',
         Price: 765754,
         Time: '2019-12-17 12:35:23',
-        Avatar: 'https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz.'
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
       },
       {
         Name: '不规范',
         FromUser: '地方',
         Price: 43567,
         Time: '2019-12-17 12:35:23',
-        Avatar: 'https://miro.medium.com/fit/c/96/96/0*pwkTE8MH7ajvnniz.'
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
       },
     ]
   }

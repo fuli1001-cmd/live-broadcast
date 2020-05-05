@@ -13,7 +13,6 @@ import { RewardsComponent } from './components/rewards/rewards.component';
 import { VideoBoardComponent } from './components/video-board/video-board.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { NgxAgoraModule } from 'ngx-agora';
 import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
 import { RewardComponent } from './components/reward/reward.component';
 import { GiftBoardComponent } from './components/gift-board/gift-board.component';
@@ -36,8 +35,7 @@ import { GiftBoardComponent } from './components/gift-board/gift-board.component
     BrowserModule,
     AppRoutingModule,
       HttpClientModule,
-      FormsModule,
-    NgxAgoraModule.forRoot({ AppID: environment.agora.appId })
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
