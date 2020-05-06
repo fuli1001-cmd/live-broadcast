@@ -1,30 +1,5 @@
-<!--<div style="padding-left: 5%; padding-right: 5%; width: 100%;">
-  <div class="row no-gutters profile-label">昵称</div>
-  <div class="row no-gutters">
-    <input type="text" class="form-control" [(ngModel)]="user.nickname">
-  </div>
-
-  <div class="row no-gutters profile-label">手机号</div>
-  <div class="row no-gutters">
-    <input type="text" class="form-control" [(ngModel)]="user.phonenumber">
-  </div>
-
-  <div class="row no-gutters profile-label">性别</div>
-  <div class="row no-gutters">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">男</a>
-        <a class="dropdown-item" href="#">女</a>
-      </div>
-    </div>
-  </div>
-</div>-->
-
-  <div class="root">
-    <div class="text-center title-bar" style="display: table;">
+  <div *ngIf="user" class="root">
+    <!-- <div class="text-center title-bar" style="display: table;">
       <div style="display: table-cell; vertical-align: middle;">
         <div>
           编辑资料
@@ -33,24 +8,26 @@
     </div>
     <div class="separator">
       <div class="separator-line"></div>
-    </div>
+    </div> -->
+    
+    <app-title-bar [title]="'编辑资料'"></app-title-bar>
 
-    <div style="padding-left: 5%; padding-right: 5%;">
+    <div class="edit-area">
       <div class="row no-gutters profile-label" style="margin-bottom: 1%">昵称</div>
       <div class="row no-gutters" style="margin-bottom: 3%">
-        <input type="text" class="form-control" [(ngModel)]="user.nickname">
+        <input type="text" class="form-control" [(ngModel)]="user.userInfoLite.nickname">
       </div>
 
       <div class="row no-gutters profile-label" style="margin-bottom: 1%">手机号</div>
       <div class="row no-gutters" style="margin-bottom: 3%">
-        <input type="text" class="form-control" [(ngModel)]="user.phonenumber">
+        <input type="text" class="form-control" [(ngModel)]="user.userInfoLite.phonenumber">
       </div>
 
       <div class="row no-gutters profile-label" style="margin-bottom: 1%">性别</div>
       <div class="row no-gutters">
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{user.gender}}
+            {{user.userInfoLite.gender}}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">男</a>

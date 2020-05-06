@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
 import { RewardComponent } from './components/reward/reward.component';
 import { GiftBoardComponent } from './components/gift-board/gift-board.component';
+import { TitleBarComponent } from './components/title-bar/title-bar.component';
+import { HotProductComponent } from './components/hot-product/hot-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { GiftBoardComponent } from './components/gift-board/gift-board.component
     VideoBoardComponent,
     RewardHistoryComponent,
     RewardComponent,
-    GiftBoardComponent
+    GiftBoardComponent,
+    TitleBarComponent,
+    HotProductComponent
   ],
   imports: [
     BrowserModule,

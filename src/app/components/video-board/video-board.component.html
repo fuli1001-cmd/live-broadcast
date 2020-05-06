@@ -32,7 +32,7 @@
 </div>
 <!-- 礼物 -->
 <div class="gift-board" *ngIf="showGiftBoard">
-  <app-gift-board (onClose)="closeGiftBoard()" [podcasterId]="podcaster.HostId"></app-gift-board>
+  <app-gift-board (onClose)="closeGiftBoard()" [podcaster]="podcaster"></app-gift-board>
 </div>
 
 <!-- 主播信息 -->

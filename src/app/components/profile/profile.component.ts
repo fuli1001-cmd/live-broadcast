@@ -14,14 +14,14 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.user = {
-      userId: '1',
-      nickname: '空心菜',
-        avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968',
-      username: 'kxc',
-        phonenumber: '13894069305',
-        gender: '男'
-    };
+    // this.user = {
+    //   userId: '1',
+    //   nickname: '空心菜',
+    //     avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968',
+    //   username: 'kxc',
+    //     phonenumber: '13894069305',
+    //     gender: '男'
+    // };
   }
 
   editProdile(): void {

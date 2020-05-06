@@ -1,9 +1,9 @@
-<div class="row no-gutters pt-2">
+<div *ngIf="user" class="row no-gutters pt-2">
   <div class="avatar">
-    <img src="{{user.avatar}}" class="w-67 rounded-circle" alt="{{user.nickname}}">
+    <img src="{{user.userInfoLite.avatar}}" class="w-67 rounded-circle" alt="{{user.userInfoLite.nickname}}">
   </div>
   <div class="info">
-    <div class="text-name">{{user.nickname}}</div>
+    <div class="text-name">{{user.userInfoLite.nickname}}</div>
     <div class="text-other">余额</div>
     <div class="row no-gutters mt-2">
       <div class="col-sm-4">

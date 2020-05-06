@@ -1,8 +1,14 @@
 export interface User {
-    userId: string;
-    nickname: string;
-    avatar: string;
-    username: string;
-    phonenumber: string;
-    gender: string;
+    agoraAppId: string;
+    fileServer: string;
+    token: string;
+    userInfoLite: {
+        avatar: string;
+        nickname: string;
+        registrationId: string;
+        userId: number;
+        username: string;
+        phonenumber: string;
+        gender: string;
+    }
 }

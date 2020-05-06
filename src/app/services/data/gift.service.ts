@@ -14,12 +14,18 @@ export class GiftService {
         return await this.generalService.doAction<Gift[]>('Gift/AuthOpGiftByAction', data);
     }
 
-    async sendGift(giftId: number, toHostId: number): Promise<any> {
+    async sendGift(giftId: number, toHostId: number, showId: string): Promise<number> {
         let data = {
             opCode: 30004,
             GiftId: giftId,
-            ToHostId: toHostId
+            ToHostId: toHostId,
+            ShowId: showId
         };
-        return await this.generalService.doAction<any>('Gift/AuthOpGiftByAction', data);
+        let request = {
+          opCode: 30004,
+          data: JSON.stringify(data)
+        };
+
+        return await this.generalService.doAction<number>('Gift/AuthOpGiftByAction', request);
     }
 }

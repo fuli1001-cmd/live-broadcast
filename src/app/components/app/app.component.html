@@ -28,7 +28,7 @@
       <!-- 用户信息 -->
       <div class="row no-gutters profile">
         <div class="col-12">
-          <app-profile (onEditProfile)="editProfile()" (onShowRewardHistory)="showRewardHistory()"></app-profile>
+          <app-profile [user]="generalService.user" (onEditProfile)="editProfile()" (onShowRewardHistory)="showRewardHistory()"></app-profile>
         </div>
       </div>
       <div class="profile-reward-separator"></div>
@@ -36,7 +36,7 @@
       <div class="row no-gutters reward">
         <div class="col-12">
           <app-reward-history *ngIf="displayRewardHistory"></app-reward-history>
-          <app-profile-editing *ngIf="displayProfileEditing"></app-profile-editing>
+          <app-profile-editing [user]="generalService.user" *ngIf="displayProfileEditing"></app-profile-editing>
         </div>
       </div>
     </div>

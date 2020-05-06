@@ -58,15 +58,22 @@
 .messages {
   position: absolute;
   bottom: 9%;
-  left: 12px;
+  left: 0 ;
   max-height: 30%;
   overflow: auto;
-  /* 102% to hide the scroll bar*/
-  width: 102%;
-  padding-right: 15px;
+  width: 100%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
   /* reverse display to display newly added line without manaual scroll */
   display: flex;
   flex-direction: column-reverse;
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.messages::-webkit-scrollbar {
+  display: none;
 }
 
 .gift-board {

@@ -24,7 +24,8 @@
         <div class="carousel-inner">
             <div *ngFor="let group of giftGroups; let i = index" class="carousel-item" [ngClass]="{'active' : i == 0}">
                 <div class="row no-gutters">
-                    <div class="col-3 gift mb-3" *ngFor="let gift of group" (click)="onClickGift(gift)">
+                    <div *ngFor="let gift of group" (click)="onClickGift(gift)" 
+                    class="col-3 gift mb-3" [ngClass]="{'selected-gift': selectedGift && selectedGift.Id == gift.Id}">
                         <img class="w-50" src="{{gift.Url}}" alt="{{gift.Name}}">
                         <div class="w-100 gift-name">{{gift.Name}}</div>
                         <div class="w-100 gift-price">{{gift.Price}}豆</div>
@@ -44,9 +45,10 @@
 
     <!-- bottom bar -->
     <div class="row no-gutters bottom">
-        <div class="col-6 bottom-text">余额：</div>
+        <div class="col-6 bottom-text">余额：{{userBalance}}</div>
         <div class="col-6">
-            <button type="button" class="btn bottom-btn float-right" (click)="onClickSend()">发送</button>
+            <button type="button" class="btn bottom-btn float-right" 
+            (click)="onClickSend()" [attr.disabled]="selectedGift ? null : ''">发送</button>
         </div>
     </div>
 </div>

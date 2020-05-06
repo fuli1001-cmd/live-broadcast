@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.selected-gift {
+    background:rgba(65,64,64,1);
+}
+
 .gift-name {
     font-size: 0.9vw;
 }
@@ -73,4 +77,9 @@ https://codepen.io/dferenc/pen/XVoboo
 }
 .carousel-indicators {
     bottom: -30px;
+}
+
+/* 调整carousel control按钮的宽度 */
+.carousel-control-next, .carousel-control-prev {
+    width: 8%;
 }

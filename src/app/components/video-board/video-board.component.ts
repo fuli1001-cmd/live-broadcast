@@ -73,7 +73,8 @@ export class VideoBoardComponent implements OnInit {
 
         this.agoraRtmService.leftChannelEvent.subscribe(async () => {
             this.joinedChannel = false;
-            this.messages.push(await this.sendMessage('我离开了直播间', MessageTypes.system));
+            await this.sendMessage('我离开了直播间', MessageTypes.system);
+            this.messages.splice(0, this.messages.length);
         });
     }
 
@@ -100,7 +101,8 @@ export class VideoBoardComponent implements OnInit {
     }
 
     onClickShowGiftBoard(): void {
-        this.showGiftBoard = true;
+        if (!this.viewOnlyMode)
+            this.showGiftBoard = true;
     }
 
     closeGiftBoard(): void {

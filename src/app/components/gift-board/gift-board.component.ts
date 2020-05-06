@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Gift } from 'src/app/models/gift';
 import { GiftService } from '../../services/data/gift.service';
 import { PodcasterEventService } from '../../services/events/podcaster-event.service';
+import { UserService } from '../../services/data/user.service';
+import { Podcaster } from '../../models/podcaster';
 
 @Component({
     selector: 'app-gift-board',
@@ -10,16 +12,19 @@ import { PodcasterEventService } from '../../services/events/podcaster-event.ser
 })
 export class GiftBoardComponent implements OnInit {
     giftGroups: Gift[][] = [];
-    private gift: Gift;
-    @Input() podcasterId: number;
+    selectedGift: Gift;
+    userBalance: number;
+    @Input() podcaster: Podcaster;
     @Output() onClose = new EventEmitter();
 
-    constructor(private giftService: GiftService, private podcasterEventService: PodcasterEventService) { }
+    constructor(private giftService: GiftService, 
+        private userService: UserService, 
+        private podcasterEventService: PodcasterEventService) { }
 
     async ngOnInit(): Promise<void> {
         this.registerPodcasterEvent();
+        this.userBalance = await this.getUserBalance();
         await this.init();
-        console.log(`podcasterId: ${this.podcasterId}`);
     }
 
     private async init(): Promise<void> {
@@ -40,7 +45,11 @@ export class GiftBoardComponent implements OnInit {
     }
 
     private registerPodcasterEvent(): void {
-        this.podcasterEventService.podcasterSelectedEvent.subscribe(podcaster => this.podcasterId = podcaster.HostId);
+        this.podcasterEventService.podcasterSelectedEvent.subscribe(podcaster => this.podcaster = podcaster);
+    }
+
+    private async getUserBalance(): Promise<number> {
+        return await this.userService.getBalance();
     }
 
     onClickClose(): void {
@@ -48,11 +57,12 @@ export class GiftBoardComponent implements OnInit {
     }
 
     async onClickSend(): Promise<void> {
-        let result = await this.giftService.sendGift(this.gift.Id, this.podcasterId);
+        this.userBalance = await this.giftService.sendGift(this.selectedGift.Id, this.podcaster.HostId, this.podcaster.ShowId);
+        console.log(this.userBalance);
     }
 
-    onClickGift(gift: Gift): void {
-        this.gift = gift;
+    onClickGift(selectedGift: Gift): void {
+        this.selectedGift = selectedGift;
     }
 
 }

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GeneralService } from './general.service';
-import { Auth } from '../../models/auth';
+import { User } from '../../models/user';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +10,19 @@ export class AuthService {
 
   constructor(private generalService: GeneralService) { }
 
-  async login(): Promise<Auth> {
+  async login(): Promise<User> {
     let data = { 
-      opCode: 22001,
-      username: 'test01',
-      password: '111111',
-      clientType: 135,
-      clientVer: null,
+      username: 'test002',
+      password: Md5.hashAsciiStr('123123'),
+      clientType: 136,
+      clientVer: '1.0.0',
       regstrationId: null
     };
-    return await this.generalService.doAction<Auth>('User/OpUserByAction', data);
+    let request = {
+      opCode: 22001,
+      data: JSON.stringify(data)
+    };
+    return await this.generalService.doAction<User>('User/OpUserByAction', request);
 
     // let data = {
     //   opCode: opCode

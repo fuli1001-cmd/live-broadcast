@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/data/auth.service';
+import { GeneralService } from '../../services/data/general.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,13 @@ import { AuthService } from '../../services/data/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'live-broadcast';
   displayProfileEditing: boolean;
   displayRewardHistory: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(public generalService: GeneralService) { }
 
   async ngOnInit(): Promise<void> {
     this.displayRewardHistory = true;
-    // let result = await this.authService.login();
-    // console.log('****************************');
-    // console.log(result);
   }
 
   editProfile(): void {
