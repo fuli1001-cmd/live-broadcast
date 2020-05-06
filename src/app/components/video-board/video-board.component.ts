@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Message, MessageTypes } from 'src/app/models/message';
 import { PodcasterEventService } from '../../services/events/podcaster-event.service';
 import { Podcaster } from '../../models/podcaster';
@@ -11,6 +11,8 @@ import { AgoraRtcService } from '../../services/agora/agora-rtc.service';
     styleUrls: ['./video-board.component.css']
 })
 export class VideoBoardComponent implements OnInit {
+
+    @Output() onEnterExitRoomEvent: EventEmitter<boolean> = new EventEmitter();
 
     remoteStreamElementId: string;
     podcaster: Podcaster;
@@ -111,10 +113,12 @@ export class VideoBoardComponent implements OnInit {
 
     onClickEnterRoom(): void {
         this.viewOnlyMode = false;
+        this.onEnterExitRoomEvent.emit(true);
     }
 
     onClickStopRoom(): void {
         this.viewOnlyMode = true;
+        this.onEnterExitRoomEvent.emit(false);
     }
 
 }

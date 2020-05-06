@@ -18,6 +18,7 @@ import { RewardComponent } from './components/reward/reward.component';
 import { GiftBoardComponent } from './components/gift-board/gift-board.component';
 import { TitleBarComponent } from './components/title-bar/title-bar.component';
 import { HotProductComponent } from './components/hot-product/hot-product.component';
+import { HotProductBoardComponent } from './components/hot-product-board/hot-product-board.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HotProductComponent } from './components/hot-product/hot-product.compon
     RewardComponent,
     GiftBoardComponent,
     TitleBarComponent,
-    HotProductComponent
+    HotProductComponent,
+    HotProductBoardComponent
   ],
   imports: [
     BrowserModule,

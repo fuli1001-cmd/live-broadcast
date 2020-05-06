@@ -1,3 +1,17 @@
-<!-- <div>
-    <img src=
-</div> -->
+<div>
+  <div class="row no-gutters">
+    <div class="col-12">
+      <img src="{{product.CoverImage}}" (click)="onClickProduct()" class="product-image" />
+    </div>
+  </div>
+  <div class="product-name">{{product.Name}}</div>
+  <div class="product-price">{{product.Price | currency}}</div>
+  <div class="row no-gutters">
+    <div class="col-6">
+      <span class="product-count">{{product.PurchasedUserCount}}人已购</span>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn float-right check-btn" (click)="onClickChecking()">查看</button>
+    </div>
+  </div>
+</div> 

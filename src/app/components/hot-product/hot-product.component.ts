@@ -2,16 +2,25 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
-  selector: 'app-hot-product',
-  templateUrl: './hot-product.component.html',
-  styleUrls: ['./hot-product.component.css']
+    selector: 'app-hot-product',
+    templateUrl: './hot-product.component.html',
+    styleUrls: ['./hot-product.component.css']
 })
 export class HotProductComponent implements OnInit {
-  @Input() product: Product;
+    @Input() product: Product;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+
+    }
+
+    onClickProduct(): void {
+
+    }
+
+    onClickChecking(): void {
+
+    }
 
 }

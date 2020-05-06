@@ -13,12 +13,13 @@
       <div class="row no-gutters h-80">
         <!-- 播客 -->
         <div class="podcaster-board">
-          <app-podcaster-board></app-podcaster-board>
+          <app-podcaster-board *ngIf="!inRoom"></app-podcaster-board>
+          <app-hot-product-board *ngIf="inRoom"></app-hot-product-board>
         </div>
         <div class="w-1"></div>
         <!-- 视频 -->
         <div class="video">
-          <app-video-board></app-video-board>
+          <app-video-board (onEnterExitRoomEvent)="onEnterExitRoomEvent($event)"></app-video-board>
         </div>
       </div>
     </div>

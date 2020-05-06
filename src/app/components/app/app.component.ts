@@ -9,7 +9,8 @@ import { GeneralService } from '../../services/data/general.service';
 })
 export class AppComponent implements OnInit {
   displayProfileEditing: boolean;
-  displayRewardHistory: boolean;
+    displayRewardHistory: boolean;
+    inRoom: boolean;
 
   constructor(public generalService: GeneralService) { }
 
@@ -25,5 +26,9 @@ export class AppComponent implements OnInit {
   showRewardHistory(): void {
     this.displayRewardHistory = true;
     this.displayProfileEditing = false;
-  }
+    }
+
+    onEnterExitRoomEvent(status: boolean): void {
+        this.inRoom = status;
+    }
 }
