@@ -21,13 +21,12 @@ export class PodcasterBoardComponent implements OnInit {
         private agoraRtcService: AgoraRtcService) { }
 
     async ngOnInit(): Promise<void> {
-        this.displayType = DisplayTypesEnum.Hot;
         this.registerAgoraServiceEvents();
 
         try {
             await this.agoraRtmService.init();
             this.agoraRtcService.init();
-            this.podcasters = await this.getPodcasters();
+            await this.onClickHot();
             // 发送默认选中第一个主播的事件
             if (this.podcasters.length > 0)
                 this.podcasterEventService.selectPodcaster(this.podcasters[0]);
@@ -36,19 +35,22 @@ export class PodcasterBoardComponent implements OnInit {
         }
     }
 
-    async getPodcasters(): Promise<Podcaster[]> {
-        let podcasters = await this.podcasterService.getPodcasters();
-        if (podcasters.length > 0) {
+    async setPodcasters(): Promise<void> {
+        if (this.displayType == DisplayTypesEnum.Hot)
+            this.podcasters = await this.podcasterService.getHotPodcasters();
+        else if (this.displayType == DisplayTypesEnum.Followed)
+            this.podcasters = await this.podcasterService.getFollowedPodcasters();
+
+        if (this.podcasters.length > 0) {
             // 订阅主播在线状态
-            this.agoraRtmService.subscribePeersOnlineStatus(podcasters.map(podcaster => podcaster.HostId.toString()));
+            this.agoraRtmService.subscribePeersOnlineStatus(this.podcasters.map(podcaster => podcaster.HostId.toString()));
             // 获取频道观众人数
-            let memberCounts = await this.agoraRtmService.client.getChannelMemberCount(podcasters.map(podcaster => podcaster.ShowId.toString()));
+            let memberCounts = await this.agoraRtmService.client.getChannelMemberCount(this.podcasters.map(podcaster => podcaster.ShowId.toString()));
             // 设置频道观众人数
             for (let channel in memberCounts) {
-                podcasters.find(p => p.ShowId == channel).AgoraChannelMemberCount = memberCounts[channel];
+                this.podcasters.find(p => p.ShowId == channel).AgoraChannelMemberCount = memberCounts[channel];
             }
         }
-        return podcasters;
     }
 
     private registerAgoraServiceEvents(): void {
@@ -59,12 +61,14 @@ export class PodcasterBoardComponent implements OnInit {
         });
     }
 
-    onClickHot(): void {
+    async onClickHot(): Promise<void> {
         this.displayType = DisplayTypesEnum.Hot;
+        await this.setPodcasters();
     }
 
-    onClickFollowed(): void {
+    async onClickFollowed(): Promise<void> {
         this.displayType = DisplayTypesEnum.Followed;
+        await this.setPodcasters();
     }
 }
 

@@ -5,6 +5,7 @@ import { Podcaster } from '../../models/podcaster';
 import { AgoraRtmService } from '../../services/agora/agora-rtm.service';
 import { AgoraRtcService } from '../../services/agora/agora-rtc.service';
 import { GeneralService } from '../../services/data/general.service';
+import { PodcasterService } from '../../services/data/podcaster.service';
 import { GiftService } from '../../services/data/gift.service';
 import { Gift } from 'src/app/models/gift';
 
@@ -19,23 +20,24 @@ export class VideoBoardComponent implements OnInit {
 
     remoteStreamElementId: string;
     podcaster: Podcaster;
+    rewardAmount: number;
+    viewOnlyMode: boolean;
+    joinedChannel: boolean;
+    showGiftBoard: boolean;
 
     messageContent: string;
     messages: Message[];
 
     giftMessage: Message;
     gift: Gift;
-
-    viewOnlyMode: boolean;
-    joinedChannel: boolean;
-    showGiftBoard: boolean;
     
 
     constructor(private podcasterEventService: PodcasterEventService,
         private agoraRtmService: AgoraRtmService,
         private agoraRtcService: AgoraRtcService,
         private generalService: GeneralService,
-        private giftService: GiftService) { }
+        private giftService: GiftService,
+        private podcasterService: PodcasterService) { }
 
     async ngOnInit(): Promise<void> {
         this.remoteStreamElementId = 'remote-stream';
@@ -65,6 +67,7 @@ export class VideoBoardComponent implements OnInit {
             this.podcaster = podcaster;
             await this.agoraRtcService.joinChannel(podcaster.ShowId.toString());
             await this.agoraRtmService.joinChannel(podcaster.ShowId.toString());
+            this.rewardAmount = await this.podcasterService.getRewardAmount(podcaster.ShowId.toString());
         });
     }
 
@@ -151,6 +154,11 @@ export class VideoBoardComponent implements OnInit {
     onClickStopRoom(): void {
         this.viewOnlyMode = true;
         this.onEnterExitRoomEvent.emit(false);
+    }
+
+    async onClickFollow(): Promise<void> {
+        let result = await this.podcasterService.followPodcaster(this.podcaster.HostId);
+        console.log(`-----follow result: ${result}-----`);
     }
 
     async onGiftSent(giftId: number): Promise<void> {

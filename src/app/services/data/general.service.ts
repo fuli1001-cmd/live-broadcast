@@ -21,15 +21,22 @@ export class GeneralService {
     constructor(private http: HttpClient) { }
 
     async doAction<T>(actionUrl: string, data: any, authenticate: boolean = true): Promise<T> {
-        if (authenticate && !this.httpOptions.headers.get('Authorization')) {
-            this.user = await this.login();
-            this.httpOptions.headers = this.httpOptions.headers.append('Authorization', 'BasicAuth ' + this.user.token);
-        }
+        console.log(`-----action url: ${actionUrl}-----`);
+        console.log(data);
+        try {
+            if (authenticate && !this.httpOptions.headers.get('Authorization')) {
+                this.user = await this.login();
+                this.httpOptions.headers = this.httpOptions.headers.append('Authorization', 'BasicAuth ' + this.user.token);
+            }
 
-        let apiUrl = ConfigService.config.serviceBaseUrl + actionUrl;
-        let blob = await this.http.post<Blob>(apiUrl, data, this.httpOptions).toPromise();
-        let result = await this.inflate<T>(blob);
-        return result;
+            let apiUrl = ConfigService.config.serviceBaseUrl + actionUrl;
+            let blob = await this.http.post<Blob>(apiUrl, data, this.httpOptions).toPromise();
+            let result = await this.inflate<T>(blob);
+            return result;
+        } catch (err) {
+            console.log(`-----error: ${err}-----`);
+            return null;
+        }
     }
 
     async inflate<T>(blob: Blob): Promise<T> {
@@ -37,8 +44,10 @@ export class GeneralService {
         let response = JSON.parse(pako.inflate(uint8Array, { to: 'string' }));
         if (response.result === 0)
             return response.data as T;
-        else
+        else {
+            console.log(`-----response error code: ${response.result}-----`);
             return null;
+        }
     }
 
     async login(): Promise<User> {

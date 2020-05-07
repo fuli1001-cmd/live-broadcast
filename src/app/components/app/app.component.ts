@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RewardTypesEnum } from '../rewards/rewards.component';
 import { GeneralService } from '../../services/data/general.service';
-import { UiEventService } from '../../services/events/ui-event.service'
+import { UiEventService } from '../../services/events/ui-event.service';
 
 @Component({
   selector: 'app-root',

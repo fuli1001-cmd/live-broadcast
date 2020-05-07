@@ -39,7 +39,7 @@ export class AgoraRtmService {
         await this.channel.join();
         this.channelId = channelId;
 
-        console.log(`****joined rtm channel ${channelId}****`);
+        console.log(`-----joined rtm channel ${channelId}-----`);
         this.joinedChannelEvent.emit();
     }
 

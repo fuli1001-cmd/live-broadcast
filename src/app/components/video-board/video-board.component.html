@@ -58,7 +58,8 @@
         <div class="col align-self-center pr-2">
           <img class="align-self-center rounded-circle podcaster-info-like"
                [ngClass]="{'pointer-cursor': !viewOnlyMode}"
-               src="../../../assets/images/video-board/ico_zan_n.png">
+               src="../../../assets/images/video-board/ico_zan_n.png"
+               (click)="onClickFollow()">
         </div>
       </div>
     </div>
@@ -73,7 +74,7 @@
   <div class="row no-gutters mt-2">
     <div class="col-auto podcaster-info-line-2">
       <img src="../../../assets/images/video-board/ico_money.png" class="reward-info-icon">
-      <span class="pl-1 reward-info-text">本场打赏&nbsp;&nbsp;</span>
+      <span class="pl-1 reward-info-text">本场打赏&nbsp;&nbsp;{{rewardAmount ? rewardAmount : 0}}</span>
     </div>
   </div>
 </div>
