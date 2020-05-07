@@ -1,4 +1,9 @@
 <div class="title-bar">
-    <div class="title">{{title}}</div>
+    <div class="row no-gutters">
+        <div class="col-auto back-button-div" *ngIf="backButton">
+            <img src="../../../assets/images/reward/ico_return_n.png" class="align-self-center back-button-image" (click)="onClickBackButton()">
+        </div>
+        <div class="col title">{{title}}</div>
+    </div>
     <div class="separator"></div>
 </div>

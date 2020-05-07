@@ -55,6 +55,24 @@
   z-index: 1;
 }
 
+.caution-message {
+  font-size:14px;
+  font-weight:400;
+  line-height:20px;
+  color:rgba(255,200,83,1);
+}
+
+.gift-message {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  padding-left: 2.5%;
+}
+
+.gift-image {
+  width: 10%;
+}
+
 .messages {
   position: absolute;
   bottom: 9%;
@@ -178,11 +196,6 @@
 
 .ad-img-right {
   float: right;
-}
-
-.gift-msg {
-  position: absolute;
-  bottom: 40%;
 }
 
 .remote-stream {

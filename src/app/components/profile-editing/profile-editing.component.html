@@ -1,16 +1,5 @@
   <div *ngIf="user" class="root">
-    <!-- <div class="text-center title-bar" style="display: table;">
-      <div style="display: table-cell; vertical-align: middle;">
-        <div>
-          编辑资料
-        </div>
-      </div>
-    </div>
-    <div class="separator">
-      <div class="separator-line"></div>
-    </div> -->
-    
-    <app-title-bar [title]="'编辑资料'"></app-title-bar>
+    <app-title-bar [title]="'编辑资料'" [backButton]="true"></app-title-bar>
 
     <div class="edit-area">
       <div class="row no-gutters profile-label" style="margin-bottom: 1%">昵称</div>

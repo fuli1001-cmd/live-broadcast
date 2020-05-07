@@ -1,14 +1,4 @@
 <div class="root">
-    <!-- <div class="text-center title-bar" style="display: table;">
-        <div style="display: table-cell; vertical-align: middle;">
-          <div>
-            打赏记录
-          </div>
-        </div>
-    </div>
-    <div class="separator">
-        <div class="separator-line"></div>
-    </div> -->
     <app-title-bar [title]="'打赏记录'"></app-title-bar>
     <div class="reward-history">
         <app-reward class="reward" [reward]="reward" *ngFor="let reward of rewards"></app-reward>

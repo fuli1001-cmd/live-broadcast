@@ -8,18 +8,55 @@ import { RewardService } from '../../services/data/reward.service';
     styleUrls: ['./rewards.component.css']
 })
 export class RewardsComponent implements OnInit {
-    @Input() rewards: Reward[];
-    @Input() type: string;
 
-    constructor(private rewardService: RewardService) { }
+    @Input() type: RewardTypesEnum;
+    rewards: Reward[];
+    RewardTypes = RewardTypesEnum;
 
-    ngOnInit(): void {
-        this.type = 'ranking-list';
-        // this.getRewardHistory();
-    }
+  constructor(private rewardService: RewardService) { }
 
-    async getRewardHistory(): Promise<void> {
-        this.rewards = await this.rewardService.getRewardHistory();
-    }
+  async ngOnInit(): Promise<void> {
+    await this.getRewardHistory();
+  }
 
+  async getRewardHistory(): Promise<void> {
+    // this.rewards = await this.rewardService.getRewardHistory();
+    
+    // fake data
+    this.rewards = [
+      {
+        Name: 'dada',
+        FromUser: 'mcfksd',
+        Price: 765754,
+        Time: '2019-12-17 12:35:23',
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
+      },
+      {
+        Name: 'dada',
+        FromUser: '小王',
+        Price: 43567,
+        Time: '2019-12-17 12:35:23',
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
+      },
+      {
+        Name: 'dada',
+        FromUser: '小李',
+        Price: 12456,
+        Time: '2019-12-17 12:35:23',
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
+      },
+      {
+        Name: 'dada',
+        FromUser: '小张',
+        Price: 4567,
+        Time: '2019-12-17 12:35:23',
+        Avatar: 'http://t7.baidu.com/it/u=3204887199,3790688592&fm=79&app=86&f=JPEG?w=4610&h=2968'
+      }];
+  }
+
+}
+
+export enum RewardTypesEnum {
+    Top,
+    History
 }

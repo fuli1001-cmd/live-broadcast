@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UiEventService } from '../../services/events/ui-event.service'
 
 @Component({
   selector: 'app-title-bar',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TitleBarComponent implements OnInit {
 
   @Input() title: string;
+  @Input() backButton: boolean;
 
-  constructor() { }
+  constructor(private uiEventService: UiEventService) { }
 
   ngOnInit(): void {
+  }
+
+  onClickBackButton(): void {
+    this.uiEventService.backToTopRewardsEvent.emit();
   }
 
 }

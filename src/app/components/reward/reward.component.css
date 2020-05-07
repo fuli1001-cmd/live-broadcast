@@ -1,7 +1,6 @@
-.reward-row {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+/* .reward-row {
+  padding-bottom: 16px;
+} */
 
 .avatar {
     width: 34px;
@@ -31,5 +30,19 @@
   line-height: 15px;
   color: rgba(152,152,152,1);
 }
+
+.crown {
+  width: 40px;
+  height: 32px;
+}
+
+.index {
+  font-size:16px;
+  font-weight:500;
+  line-height:18px;
+  color:rgba(153,153,153,1);
+  text-align: center;
+}
+
 
 

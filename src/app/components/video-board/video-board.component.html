@@ -1,7 +1,9 @@
 <button type="button" class="btn btn-enter align-middle" (click)="onClickEnterRoom()" *ngIf="viewOnlyMode">进入直播间</button>
+
 <!-- 视频 -->
 <!-- <div *ngFor="let callId of remoteCalls" [id]="callId" class="w-100 h-100"></div> -->
 <div [id]="remoteStreamElementId" class="remote-stream" [ngClass]="{'remote-stream-view-only': viewOnlyMode}"></div>
+
 <!-- 输入框和按钮区域 -->
 <div class="row no-gutters w-100 input-area">
   <input type="text" class="form-control input-area-input" placeholder="说点什么..."
@@ -21,18 +23,28 @@
        (click)="onClickStopRoom()"
        [attr.disabled]="!viewOnlyMode && joinedChannel ? null : ''">
 </div>
+
+<!-- 礼物消息 -->
+<div class="gift-message" *ngIf="giftMessage">
+  <span class="badge badge-pill badge-secondary text-wrap">
+    {{giftMessage.name}}&nbsp;&nbsp;送出{{gift.Name}}
+  </span>
+  <img src="{{gift.Url}}" class="gift-image">
+</div>
+
 <!-- 消息展示区域 -->
 <div class="messages">
   <div *ngFor="let msg of messages; let i = index;">
-    <span class="badge badge-pill badge-secondary text-wrap mt-2" style="text-align: left;">
-      <span style="color: #FF4A65;">{{messages[messages.length - 1 -i].name}}:&nbsp;</span>
+    <span class="badge badge-pill badge-secondary text-wrap mt-2" [ngClass]="{'caution-message': i == messages.length - 1}">
+      <span style="color: #FF4A65;" *ngIf="i != messages.length - 1">{{messages[messages.length - 1 -i].name}}:&nbsp;</span>
       {{messages[messages.length - 1 -i].content}}
     </span>
   </div>
 </div>
+
 <!-- 礼物 -->
 <div class="gift-board" *ngIf="showGiftBoard">
-  <app-gift-board (onClose)="closeGiftBoard()" [podcaster]="podcaster"></app-gift-board>
+  <app-gift-board (onClose)="closeGiftBoard()" (onGiftSent)="onGiftSent($event)" [podcaster]="podcaster"></app-gift-board>
 </div>
 
 <!-- 主播信息 -->
@@ -90,11 +102,4 @@
       <img class="ad-img ad-img-right" [ngClass]="{'pointer-cursor': !viewOnlyMode}" src='../../../assets/images/video-board/test_ad.png'>
     </div> 
   </div>
-</div>
-
-<!-- 礼物消息 -->
-<div class="gift-msg" *ngIf="giftMessage">
-  <span class="badge badge-pill badge-secondary text-wrap mt-2" style="text-align: left;">
-    {{giftMessage.name}}&nbsp;&nbsp;送出{{giftMessage.content}}
-  </span>
 </div>

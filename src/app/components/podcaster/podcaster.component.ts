@@ -14,8 +14,7 @@ export class PodcasterComponent implements OnInit {
   constructor(private podcasterEventService: PodcasterEventService) { }
 
   ngOnInit(): void {
-    console.log('rMargin:');
-    console.log(this.rMargin);
+
   }
 
   onClickPodcaster(): void {

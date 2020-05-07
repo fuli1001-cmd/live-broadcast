@@ -1,7 +1,8 @@
 <div>
   <div class="row no-gutters">
     <div class="col-12">
-      <img src="{{product.CoverImage}}" (click)="onClickProduct()" class="product-image" />
+      <img src="{{product.CoverImage}}" (click)="onClickProduct()" class="product-image" 
+      [ngClass]="{'mx-auto' : !leftImage && !rightImage, 'd-block' : !leftImage && !rightImage, 'float-right' : rightImage}" />
     </div>
   </div>
   <div class="product-name">{{product.Name}}</div>

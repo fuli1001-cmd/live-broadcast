@@ -8,11 +8,12 @@ import { Product } from '../../models/product';
 })
 export class HotProductComponent implements OnInit {
     @Input() product: Product;
+    @Input() leftImage: boolean;
+    @Input() rightImage: boolean;
 
     constructor() { }
 
     ngOnInit(): void {
-
     }
 
     onClickProduct(): void {

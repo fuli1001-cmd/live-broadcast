@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as pako from "pako";
-import { environment } from '../../../environments/environment'
 import { User } from '../../models/user';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
     providedIn: 'root'
@@ -26,15 +26,14 @@ export class GeneralService {
             this.httpOptions.headers = this.httpOptions.headers.append('Authorization', 'BasicAuth ' + this.user.token);
         }
 
-        let apiUrl = environment.serviceBaseUrl + actionUrl;
+        let apiUrl = ConfigService.config.serviceBaseUrl + actionUrl;
         let blob = await this.http.post<Blob>(apiUrl, data, this.httpOptions).toPromise();
         let result = await this.inflate<T>(blob);
-        console.debug(`${apiUrl}`);
         return result;
     }
 
     async inflate<T>(blob: Blob): Promise<T> {
-        let uint8Array = new Uint8Array(await blob.arrayBuffer());
+        let uint8Array = new Uint8Array(await new Response(blob).arrayBuffer());
         let response = JSON.parse(pako.inflate(uint8Array, { to: 'string' }));
         if (response.result === 0)
             return response.data as T;

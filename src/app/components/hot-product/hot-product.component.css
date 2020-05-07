@@ -1,5 +1,15 @@
 .product-image {
   cursor: pointer;
+  width: 75%;
+}
+
+.product-image-center {
+  padding-left: 14.7%;
+  padding-right: 14.7;
+}
+
+.product-image-right {
+  padding-left: 29.4%;
 }
 
 .product-name {

@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import * as rtc from "agora-rtc-sdk";
-import { environment } from 'src/environments/environment';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +19,7 @@ export class AgoraRtcService {
         if (!this.client) {
             this.client = rtc.createClient({ mode: "live", codec: "h264" });
             return new Promise((resolve, reject) => {
-                this.client.init(environment.agora.appId, () => {
+                this.client.init(ConfigService.config.agora.appId, () => {
                     this.registerClientHandlers();
                     this.client.setClientRole('audience');
                     resolve();

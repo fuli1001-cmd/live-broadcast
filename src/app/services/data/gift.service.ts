@@ -7,11 +7,16 @@ import { GeneralService } from './general.service';
 })
 export class GiftService {
 
+  gifts: Gift[];
+
   constructor(private generalService: GeneralService) { }
 
     async getGifts(): Promise<Gift[]> {
+      if (!this.gifts) {
         let data = { opCode: 30003 };
-        return await this.generalService.doAction<Gift[]>('Gift/AuthOpGiftByAction', data);
+        this.gifts = await this.generalService.doAction<Gift[]>('Gift/AuthOpGiftByAction', data);
+      }
+      return this.gifts;
     }
 
     async sendGift(giftId: number, toHostId: number, showId: string): Promise<number> {

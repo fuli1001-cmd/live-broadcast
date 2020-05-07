@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import * as rtm from "agora-rtm-sdk";
-import { environment } from 'src/environments/environment';
 import { Message } from 'src/app/models/message';
+import { ConfigService } from '../config/config.service';
 
 
 @Injectable({
@@ -20,10 +20,10 @@ export class AgoraRtmService {
     constructor() { }
 
     async init(): Promise<void> {
-        this.client = rtm.createInstance(environment.agora.appId);
+        this.client = rtm.createInstance(ConfigService.config.agora.appId);
         this.registerClientHandlers();
         await this.client.login({
-            token: null, uid: 'ecb4e058-7753-40ca-8b13-402673c6e41e' });
+            token: null, uid: this.newUuid() });
     }
 
     async joinChannel(channelId: string): Promise<void> {
@@ -71,5 +71,15 @@ export class AgoraRtmService {
             let message = JSON.parse(text) as Message;
             this.channelMessageEvent.emit(message);
         });
+    }
+
+    private newUuid(): string {
+        let dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            let r = (dt + Math.random() * 16) % 16 | 0;
+            dt = Math.floor(dt / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
     }
 }

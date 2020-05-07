@@ -1,10 +1,28 @@
-<div class="row no-gutters reward-row">
+<!-- 打赏记录 -->
+<div class="row no-gutters pb-3" *ngIf="type == RewardTypes.History">
     <div class="col-auto align-self-center">
         <img src="{{reward.Avatar}}" class="avatar rounded-circle" alt="{{reward.FromUser}}">
     </div>
     <div class="col-auto align-self-center text text-name pl-1">{{reward.FromUser}}</div>
     <div class="col">
-      <div class="float-right text text-reward">打赏{{reward.Price}}</div>
+      <div class="align-self-centerfloat-right text text-reward">
+        打赏 <img src="../../../assets/images/video-board/ico_money.png">{{reward.Price}}
+      </div>
       <div class="float-right text text-time">{{reward.Time}}</div>
     </div>
+</div>
+
+<!-- 打赏排行榜 -->
+<div class="row no-gutters pb-3" *ngIf="type == RewardTypes.Top">
+  <div class="col-2 align-self-center index">
+      <img src="../../../assets/images/reward/ico_1.png" class="crown" *ngIf="index == 0">
+      <img src="../../../assets/images/reward/ico_2.png" class="crown" *ngIf="index == 1">
+      <img src="../../../assets/images/reward/ico_3.png" class="crown" *ngIf="index == 2">
+      <span *ngIf="index > 2">{{index + 1}}</span>
+  </div>
+  <div class="col align-self-center text text-name pl-1">{{reward.FromUser}}</div>
+  <div class="col align-self-center float-right text text-reward">
+    <img src="../../../assets/images/video-board/ico_money.png">
+    {{reward.Price}}
+  </div>
 </div>

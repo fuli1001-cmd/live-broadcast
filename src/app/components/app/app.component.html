@@ -13,8 +13,9 @@
       <div class="row no-gutters h-80">
         <!-- 播客 -->
         <div class="podcaster-board">
-          <app-podcaster-board *ngIf="!inRoom"></app-podcaster-board>
-          <app-hot-product-board *ngIf="inRoom"></app-hot-product-board>
+          <!-- <app-podcaster-board *ngIf="!inRoom"></app-podcaster-board>
+          <app-hot-product-board *ngIf="inRoom"></app-hot-product-board> -->
+          <app-podcaster-board></app-podcaster-board>
         </div>
         <div class="w-1"></div>
         <!-- 视频 -->
@@ -33,10 +34,10 @@
         </div>
       </div>
       <div class="profile-reward-separator"></div>
-      <!-- 打赏排行榜 -->
+      <!-- 打赏排行榜、打赏记录 -->
       <div class="row no-gutters reward">
         <div class="col-12">
-          <app-reward-history *ngIf="displayRewardHistory"></app-reward-history>
+          <app-rewards [type]="rewardType" *ngIf="displayRewards"></app-rewards>
           <app-profile-editing [user]="generalService.user" *ngIf="displayProfileEditing"></app-profile-editing>
         </div>
       </div>

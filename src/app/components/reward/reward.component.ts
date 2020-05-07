@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Reward } from 'src/app/models/reward';
+import { RewardTypesEnum } from '../rewards/rewards.component';
 
 @Component({
   selector: 'app-reward',
@@ -8,7 +9,10 @@ import { Reward } from 'src/app/models/reward';
 })
 export class RewardComponent implements OnInit {
 
-  @Input() reward: Reward
+  @Input() index: number;
+  @Input() reward: Reward;
+  @Input() type: RewardTypesEnum;
+  RewardTypes = RewardTypesEnum;
 
   constructor() { }
 

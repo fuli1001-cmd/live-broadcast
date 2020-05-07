@@ -4,10 +4,7 @@
 
 export const environment = {
   production: false,
-  agora: {
-    appId: 'f316ae55a63c4f378881b151a2401182'
-  },
-  serviceBaseUrl: 'http://139.155.70.130:8080/api/'
+  name: 'dev'
 };
 
 /*

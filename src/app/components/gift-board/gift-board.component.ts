@@ -16,6 +16,7 @@ export class GiftBoardComponent implements OnInit {
     userBalance: number;
     @Input() podcaster: Podcaster;
     @Output() onClose = new EventEmitter();
+    @Output() onGiftSent: EventEmitter<number> = new EventEmitter();
 
     constructor(private giftService: GiftService, 
         private userService: UserService, 
@@ -30,10 +31,9 @@ export class GiftBoardComponent implements OnInit {
     private async init(): Promise<void> {
         let gifts = await this.giftService.getGifts();
 
-        const myClonedArray = [];
-        gifts.forEach(val => myClonedArray.push(val));
-        myClonedArray.forEach(val => gifts.push(val));
-        console.log(gifts);
+        // const myClonedArray = [];
+        // gifts.forEach(val => myClonedArray.push(val));
+        // myClonedArray.forEach(val => gifts.push(val));
 
         let start = 0;
         while (gifts.length > start) {
@@ -58,7 +58,7 @@ export class GiftBoardComponent implements OnInit {
 
     async onClickSend(): Promise<void> {
         this.userBalance = await this.giftService.sendGift(this.selectedGift.Id, this.podcaster.HostId, this.podcaster.ShowId);
-        console.log(this.userBalance);
+        this.onGiftSent.emit(this.selectedGift.Id);
     }
 
     onClickGift(selectedGift: Gift): void {

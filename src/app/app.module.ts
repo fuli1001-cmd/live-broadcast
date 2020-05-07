@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,14 +12,17 @@ import { ProfileEditingComponent } from './components/profile-editing/profile-ed
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { VideoBoardComponent } from './components/video-board/video-board.component';
 import { HttpClientModule } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
 import { RewardComponent } from './components/reward/reward.component';
 import { GiftBoardComponent } from './components/gift-board/gift-board.component';
 import { TitleBarComponent } from './components/title-bar/title-bar.component';
 import { HotProductComponent } from './components/hot-product/hot-product.component';
 import { HotProductBoardComponent } from './components/hot-product-board/hot-product-board.component';
+import { ConfigService } from './services/config/config.service';
 
+export function initializeApp(configService: ConfigService) {
+  return () => configService.load();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,13 @@ import { HotProductBoardComponent } from './components/hot-product-board/hot-pro
       HttpClientModule,
       FormsModule
   ],
-  providers: [],
+  providers: [
+    ConfigService, { 
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ConfigService], multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

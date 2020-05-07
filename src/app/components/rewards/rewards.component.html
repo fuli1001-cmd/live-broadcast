@@ -1,6 +1,13 @@
-<div class="text-center h-5">{{type == 'ranking-list' ? '打赏排行榜' : '打赏记录'}}</div>
-<div class="row no-gutters h-9" *ngFor="let reward of rewards; let i = index">
-  <div class="w-21 text-center" style="padding-left:2px;">{{i}}</div>
-  <div class="w-48">{{reward.FromUser}}</div>
-  <div>{{reward.Price}}</div>
+<div class="root" *ngIf="type == RewardTypes.Top">
+  <app-title-bar [title]="'打赏排行榜'" [backButton]="false"></app-title-bar>
+  <div class="rewards">
+      <app-reward *ngFor="let reward of rewards; let i = index;" class="reward" [reward]="reward" [type]="type" [index]="i"></app-reward>
+  </div>
+</div>
+
+<div class="root" *ngIf="type == RewardTypes.History">
+  <app-title-bar [title]="'打赏记录'" [backButton]="true"></app-title-bar>
+  <div class="rewards">
+      <app-reward *ngFor="let reward of rewards;" class="reward" [reward]="reward" [type]="type"></app-reward>
+  </div>
 </div>
