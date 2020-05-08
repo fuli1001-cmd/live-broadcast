@@ -13,7 +13,7 @@
       </div>
 
     <div class="row no-gutters">
-      <div class="col-sm-4" *ngFor="let podcaster of podcasters; let i = index">
+      <div class="col-4" *ngFor="let podcaster of podcasters; let i = index">
         <app-podcaster [podcaster]="podcaster" [rMargin]="i % 3 != 2"></app-podcaster>
       </div>
     </div>

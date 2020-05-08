@@ -12,7 +12,6 @@ import { ProfileEditingComponent } from './components/profile-editing/profile-ed
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { VideoBoardComponent } from './components/video-board/video-board.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RewardHistoryComponent } from './components/reward-history/reward-history.component';
 import { RewardComponent } from './components/reward/reward.component';
 import { GiftBoardComponent } from './components/gift-board/gift-board.component';
 import { TitleBarComponent } from './components/title-bar/title-bar.component';
@@ -33,7 +32,6 @@ export function initializeApp(configService: ConfigService) {
     ProfileEditingComponent,
     RewardsComponent,
     VideoBoardComponent,
-    RewardHistoryComponent,
     RewardComponent,
     GiftBoardComponent,
     TitleBarComponent,
